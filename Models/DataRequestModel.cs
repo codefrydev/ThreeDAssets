@@ -14,25 +14,9 @@ public class DataRequestModel
     public string AltText { get; set; } = "3D Model";
     public string IosSrc { get; set; } = "";
 
-    public List<string> AnimationNames { get; set; } =
-    [
-        "Running",
-        "Walking",
-        "Jumping",
-        "Idle"
-    ];
+    public List<string> AnimationNames { get; set; } =[];
 
-    public List<string> EnvironmentImages { get; set; } =
-    [
-        "https://modelviewer.dev/shared-assets/environments/spruit_sunrise_1k_HDR.jpg",
-        "https://modelviewer.dev/shared-assets/environments/forest_1k_HDR.jpg",
-        "https://modelviewer.dev/shared-assets/environments/park_1k_HDR.jpg"
-    ];
+    public List<string> EnvironmentImages { get; set; } =[];
 
-    public List<string> SkyboxImages { get; set; } =
-    [
-        "https://modelviewer.dev/shared-assets/environments/spruit_sunrise_1k_HDR.jpg",
-        "https://modelviewer.dev/shared-assets/environments/forest_1k_HDR.jpg",
-        "https://modelviewer.dev/shared-assets/environments/park_1k_HDR.jpg"
-    ];
+    public List<string> SkyboxImages { get; set; } =[];
 }
