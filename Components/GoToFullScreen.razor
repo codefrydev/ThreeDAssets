@@ -1,0 +1,42 @@
+@if (_isFullScreen)
+{
+    <button type="button" class="btn btn-outline-transparent" @onclick="GoExit">
+        <i class="bi bi-x-circle"></i>
+    </button>
+}
+else
+{
+    <button type="button" class="btn btn-outline-transparent" @onclick="GoFull">
+        <i class="bi bi-fullscreen"></i>
+    </button>
+} 
+<script>
+    window.openFullScreen = (elementId) => {
+        const elem = document.getElementById(elementId);
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        }
+    };
+
+    window.closeFullScreen = () => {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+    };
+
+    window.registerFullScreenCallback = (dotnetHelper, elementId) => {
+        document.addEventListener("fullscreenchange", () => {
+            const isFull = document.fullscreenElement?.id === elementId;
+            dotnetHelper.invokeMethodAsync("SetFullScreenState", isFull);
+        });
+    };
+
+</script>

@@ -1,0 +1,61 @@
+﻿@page "/"
+@using ThreeDAssets.Models
+@using ThreeDAssets.Components
+
+@foreach(var item in _projectslist)
+{
+    <Thumbnail DataToBeSent="@item" OnClick="LoadContent" BsModalName=@($"#{_bsModalName}")></Thumbnail>
+}
+<ModelViewerComponents  Model="new ModelViewer()" BsModalName="@_bsModalName" />
+
+@code
+{
+    private string _bsModalName = "projectModal";
+    private void LoadContent(string contentType)
+    { 
+    } 
+    readonly List<Data> _projectslist =
+    [
+        new Data()
+        {
+            NavigateUri = "https://www.google.com",
+            Name = "Project 1",
+            Description = "Description of Project 1",
+            ImageUrl = $"https://picsum.photos/200?random=${Random.Shared.NextInt64(1,10000)}",
+            ProjectName = "a"
+        },
+        new Data()
+        {
+            NavigateUri = "https://www.google.com",
+            Name = "Project 1",
+            Description = "Description of Project 1",
+            ImageUrl = $"https://picsum.photos/200?random=${Random.Shared.NextInt64(1,10000)}",
+            ProjectName = "a"
+        },
+        new Data()
+        {
+            NavigateUri = "https://www.google.com",
+            Name = "Project 1",
+            Description = "Description of Project 1",
+            ImageUrl = $"https://picsum.photos/200?random=${Random.Shared.NextInt64(1,10000)}",
+            ProjectName = "a"
+        },
+        new Data()
+        {
+            NavigateUri = "https://www.google.com",
+            Name = "Project 1",
+            Description = "Description of Project 1",
+            ImageUrl = $"https://picsum.photos/200?random=${Random.Shared.NextInt64(1,10000)}",
+            ProjectName = "a"
+        },
+        new Data()
+        {
+            NavigateUri = "https://www.google.com",
+            Name = "Project 1",
+            Description = "Description of Project 1",
+            ImageUrl = $"https://picsum.photos/200?random=${Random.Shared.NextInt64(1,10000)}",
+            ProjectName = "a"
+        },
+        
+    ];
+}
