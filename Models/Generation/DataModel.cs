@@ -1,17 +1,19 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace ThreeDAssets.Models.Generation;
 
 public class DataModel
 {
     public bool IsFavourite { get; set; } = false;
-    public ModelReference Name { get; set; } = new();
-    public ModelReference Thumbnail { get; set; } = new();
-    public ModelReference Description { get; set; } = new();
+    [Required] public ModelReference Name { get; set; } = new();
+    [Required] public ModelReference Thumbnail { get; set; } = new();
+    [Required] public ModelReference Description { get; set; } = new();
 
-    public ModelReference Source { get; set; } = new();
+    [Required] public ModelReference Source { get; set; } = new();
 
-    public ModelReference Poster { get; set; } = new();
-    public ModelReference AltText { get; set; } = new();
-    public ModelReference IosSrc { get; set; } = new();
+    [Required] public ModelReference Poster { get; set; } = new();
+    [Required] public ModelReference AltText { get; set; } = new();
+    [Required] public ModelReference IosSrc { get; set; } = new();
 
     public List<ModelReference> AnimationNames { get; set; } = [];
 

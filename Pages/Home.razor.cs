@@ -33,6 +33,10 @@ public partial class Home
     {
         _isLoading = true;
         await FetchDataAsync();
+        if (_allModelDataFromGithub.Count > 0)
+        {
+            _modelData = _allModelDataFromGithub.FirstOrDefault()?.ModelViewer;
+        }
         _isLoading = false;
         await base.OnInitializedAsync();
     }

@@ -5,7 +5,7 @@
     <div class="row g-4">
         <div class="col-md-6">
             <div class="form-floating">
-                <InputText id="name" class="form-control form-control-lg" @bind-Value="dataModelRefeModel.Name.Value"/>
+                <InputText id="name" class="form-control form-control-lg" @bind-Value="dataModelRefeModel.Name.Value" required/>
                 <label for="name">Name</label>
             </div>
         </div>
@@ -19,7 +19,7 @@
         <div class="col-12">
             <div class="form-floating">
                 <InputText id="thumbnail" class="form-control" @bind-Value="dataModelRefeModel.Thumbnail.Value"
-                           placeholder="Thumbnail URL"/>
+                           placeholder="Thumbnail URL" required/>
                 <label for="thumbnail">Thumbnail URL</label>
             </div>
         </div>
@@ -27,7 +27,7 @@
         <div class="col-12">
             <div class="form-floating">
                 <InputTextArea id="description" class="form-control" @bind-Value="dataModelRefeModel.Description.Value"
-                               Rows="3" placeholder="Description"/>
+                               Rows="3" placeholder="Description" required/>
                 <label for="description">Description</label>
             </div>
         </div>
@@ -35,7 +35,7 @@
         <div class="col-12">
             <div class="form-floating">
                 <InputText id="source" class="form-control" @bind-Value="dataModelRefeModel.Source.Value"
-                           placeholder="GLB Source URL"/>
+                           placeholder="GLB Source URL" required/>
                 <label for="source">Source (GLB URL)</label>
             </div>
         </div>
@@ -43,14 +43,14 @@
         <div class="col-md-6">
             <div class="form-floating">
                 <InputText id="poster" class="form-control" @bind-Value="dataModelRefeModel.Poster.Value"
-                           placeholder="Poster Filename or URL"/>
+                           placeholder="Poster Filename or URL" required/>
                 <label for="poster">Poster</label>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-floating">
                 <InputText id="altText" class="form-control" @bind-Value="dataModelRefeModel.AltText.Value"
-                           placeholder="Alt Text"/>
+                           placeholder="Alt Text" required/>
                 <label for="altText">Alt Text</label>
             </div>
         </div>
@@ -58,7 +58,7 @@
         <div class="col-12">
             <div class="form-floating">
                 <InputText id="iosSrc" class="form-control" @bind-Value="dataModelRefeModel.IosSrc.Value"
-                           placeholder="iOS Source URL"/>
+                           placeholder="iOS Source URL" required/>
                 <label for="iosSrc">iOS Source</label>
             </div>
         </div>
@@ -129,8 +129,7 @@
     </div>
 
     <div class="d-grid gap-2  mt-4">
-        <button class="btn btn-lg btn-success px-5" type="button" @onclick="HandleValidSubmit">Generate and Copy
-        </button>
+         <button class="btn btn-lg btn-success px-5" type="submit"> Generate and Copy </button>
     </div>
 </EditForm>
 <div class="modal fade" id="jsonModal" tabindex="-1" aria-labelledby="jsonModalLabel" aria-hidden="true">
