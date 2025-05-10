@@ -2,11 +2,10 @@
 
 @if (_isLoading)
 {
-    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
-        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
+    <button class="btn btn-transparent border-0" type="button" disabled="">
+        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+        <span role="status">Loading...</span>
+    </button>
 }
 else
 {
@@ -23,6 +22,7 @@ else
                      data-title="@item.Name"
                      data-description="@item.Description"
                      alt="@item.Name"
+                     loading="lazy"
                      >
             </div>
         }
