@@ -1,0 +1,50 @@
+<svg width="300" height="300" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <text x="4" y="29" font-size="8" fill="black" font-family="Ubuntu">CFD</text>
+    <style>
+        .spinner {
+        animation: move 2.4s linear infinite;
+        }
+
+        .delay1 {
+        animation-delay: -2.4s;
+        fill: black;
+        }
+
+        .delay2 {
+        animation-delay: -1.6s;
+        fill: black;
+        }
+
+        .delay3 {
+        animation-delay: -0.8s;
+        fill: black;
+        }
+
+        @keyframes move {
+        0%, 8.33% {
+        x: 2px;
+        y: 2px;
+        }
+        25% {
+        x: 13px;
+        y: 2px;
+        }
+        33.3%, 50% {
+        x: 13px;
+        y: 13px;
+        }
+        58.33%, 75% {
+        x: 2px;
+        y: 13px;
+        }
+        83.33%, 100% {
+        x: 2px;
+        y: 2px;
+        }
+        }
+    </style>
+
+    <rect class="spinner delay1" x="2" y="2" rx="2" width="10" height="10"/>
+    <rect class="spinner delay2" x="2" y="2" rx="2" width="10" height="10"/>
+    <rect class="spinner delay3" x="2" y="2" rx="2" width="10" height="10"/>
+</svg>
