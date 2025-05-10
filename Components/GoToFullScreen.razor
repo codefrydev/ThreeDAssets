@@ -9,7 +9,7 @@ else
     <button type="button" class="btn btn-outline-transparent" @onclick="GoFull">
         <i class="bi bi-fullscreen"></i>
     </button>
-} 
+}
 <script>
     window.openFullScreen = (elementId) => {
         const elem = document.getElementById(elementId);
@@ -38,5 +38,4 @@ else
             dotnetHelper.invokeMethodAsync("SetFullScreenState", isFull);
         });
     };
-
 </script>

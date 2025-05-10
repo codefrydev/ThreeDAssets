@@ -2,9 +2,9 @@ namespace ThreeDAssets.Models;
 
 public class ModelViewer
 {
-    public string Description { get; set; } = " Neil Armstrong was an American astronaut and aeronautical engineer who was the first person to walk on the Moon.";
-    public string Source { get; set; } = "https://raw.githubusercontent.com/abhijeetunreal/3DB/refs/heads/main/model/nerveplant.glb";
-    public string Poster { get; set; } = "poster.webp";
+    public string Description { get; set; }
+    public string Source { get; set; }
+    public string Poster { get; set; }
     public bool EnableAr { get; set; } = true;
     public bool AutoRotate { get; set; } = true;
     public bool DisablePan { get; set; } = true;
@@ -24,7 +24,10 @@ public class ModelViewer
     public string MaxFieldOfView { get; set; } = "auto";
     public string MinFieldOfView { get; set; } = "auto";
     public string EnvironmentImage { get; set; } = "";
-    public string SkyboxImage { get; set; } = "https://modelviewer.dev/shared-assets/environments/spruit_sunrise_1k_HDR.jpg";
+
+    public string SkyboxImage { get; set; } =
+        "https://modelviewer.dev/shared-assets/environments/spruit_sunrise_1k_HDR.jpg";
+
     public string SkyboxHeight { get; set; } = "2m";
     public string ToneMapping { get; set; } = "aces";
     public double ShadowIntensity { get; set; } = 1.0;

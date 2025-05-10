@@ -5,6 +5,6 @@ namespace ThreeDAssets.Components;
 
 public partial class ThreeDModelViewer : ComponentBase
 {
-    [Parameter] public ModelViewer Model { get; set; } = new(); 
-    [Parameter] public ModelViewerOptionsList Options { get; set; } = new(); 
+    [Parameter] public ModelViewer Model { get; set; } = new();
+    [Parameter] public ModelViewerOptionsList Options { get; set; } = new();
 }

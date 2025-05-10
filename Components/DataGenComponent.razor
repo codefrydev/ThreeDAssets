@@ -1,0 +1,180 @@
+<EditForm Model="dataModelRefeModel" OnValidSubmit="HandleValidSubmit" class="card shadow-lg rounded-4 p-5 my-5">
+    <DataAnnotationsValidator/>
+    <ValidationSummary class="text-danger mb-4"/>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="form-floating">
+                <InputText id="name" class="form-control form-control-lg" @bind-Value="dataModelRefeModel.Name.Value"/>
+                <label for="name">Name</label>
+            </div>
+        </div>
+        <div class="col-md-6 d-flex align-items-center">
+            <div class="form-check form-switch ms-3">
+                <InputCheckbox id="isFav" class="form-check-input" @bind-Value="dataModelRefeModel.IsFavourite"/>
+                <label class="form-check-label ms-2" for="isFav">Favourite</label>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-floating">
+                <InputText id="thumbnail" class="form-control" @bind-Value="dataModelRefeModel.Thumbnail.Value"
+                           placeholder="Thumbnail URL"/>
+                <label for="thumbnail">Thumbnail URL</label>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-floating">
+                <InputTextArea id="description" class="form-control" @bind-Value="dataModelRefeModel.Description.Value"
+                               Rows="3" placeholder="Description"/>
+                <label for="description">Description</label>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-floating">
+                <InputText id="source" class="form-control" @bind-Value="dataModelRefeModel.Source.Value"
+                           placeholder="GLB Source URL"/>
+                <label for="source">Source (GLB URL)</label>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-floating">
+                <InputText id="poster" class="form-control" @bind-Value="dataModelRefeModel.Poster.Value"
+                           placeholder="Poster Filename or URL"/>
+                <label for="poster">Poster</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating">
+                <InputText id="altText" class="form-control" @bind-Value="dataModelRefeModel.AltText.Value"
+                           placeholder="Alt Text"/>
+                <label for="altText">Alt Text</label>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-floating">
+                <InputText id="iosSrc" class="form-control" @bind-Value="dataModelRefeModel.IosSrc.Value"
+                           placeholder="iOS Source URL"/>
+                <label for="iosSrc">iOS Source</label>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-5"/>
+
+    <div class="row g-4">
+        @* Animation Names *@
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm rounded-3">
+                <div class="card-header bg-primary text-white fw-semibold">Animation Names</div>
+                <div class="card-body">
+                    @foreach (var animation in dataModelRefeModel.AnimationNames)
+                    {
+                        <div class="input-group mb-2">
+                            <InputText class="form-control" @bind-Value="animation.Value" placeholder="Animation name"/>
+                            <button type="button" class="btn btn-outline-danger"
+                                    @onclick="() => RemoveAnimation(animation)">×
+                            </button>
+                        </div>
+                    }
+                    <button type="button" class="btn btn-sm btn-outline-primary mt-2" @onclick="AddAnimation">+ Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        @* Environment Images *@
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm rounded-3">
+                <div class="card-header bg-success text-white fw-semibold">Environment Images</div>
+                <div class="card-body">
+                    @foreach (var env in dataModelRefeModel.EnvironmentImages)
+                    {
+                        <div class="input-group mb-2">
+                            <InputText class="form-control" @bind-Value="env.Value" placeholder="Image URL"/>
+                            <button type="button" class="btn btn-outline-danger"
+                                    @onclick="() => RemoveEnvironment(env)">×
+                            </button>
+                        </div>
+                    }
+                    <button type="button" class="btn btn-sm btn-outline-primary mt-2" @onclick="AddEnvironment">+ Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        @* Skybox Images *@
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm rounded-3">
+                <div class="card-header bg-info text-white fw-semibold">Skybox Images</div>
+                <div class="card-body">
+                    @foreach (var skybox in dataModelRefeModel.SkyboxImages)
+                    {
+                        <div class="input-group mb-2">
+                            <InputText class="form-control" @bind-Value="skybox.Value" placeholder="Skybox URL"/>
+                            <button type="button" class="btn btn-outline-danger" @onclick="() => RemoveSkybox(skybox)">
+                                ×
+                            </button>
+                        </div>
+                    }
+                    <button type="button" class="btn btn-sm btn-outline-primary mt-2" @onclick="AddSkybox">+ Add
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-grid gap-2  mt-4">
+        <button class="btn btn-lg btn-success px-5" type="button" @onclick="HandleValidSubmit">Generate and Copy
+        </button>
+    </div>
+</EditForm>
+<div class="modal fade" id="jsonModal" tabindex="-1" aria-labelledby="jsonModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="jsonModalLabel">Serialized Data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <pre class="bg-light p-3 rounded"><code>@deserializedJson</code></pre>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    window.bootstrapInterop = {
+        showModal: function (selector) {
+            const modalEl = document.querySelector(selector);
+            if (modalEl) {
+                const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+                modal.show();
+            }
+        }
+    };
+</script>
+
+<style>
+    .card-header {
+        font-size: 1.1rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .input-group .form-control {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .input-group .btn {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+</style>

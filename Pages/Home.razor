@@ -1,61 +1,38 @@
 ﻿@page "/"
-@using ThreeDAssets.Models
-@using ThreeDAssets.Components
 
-@foreach(var item in _projectslist)
+@if (_isLoading)
 {
-    <Thumbnail DataToBeSent="@item" OnClick="LoadContent" BsModalName=@($"#{_bsModalName}")></Thumbnail>
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
 }
-<ModelViewerComponents  Model="new ModelViewer()" BsModalName="@_bsModalName" />
-
-@code
+else
 {
-    private string _bsModalName = "projectModal";
-    private void LoadContent(string contentType)
-    { 
-    } 
-    readonly List<Data> _projectslist =
-    [
-        new Data()
+    if (_allModelDataFromGithub.Count > 0)
+    {
+        foreach (var item in _allModelDataFromGithub)
         {
-            NavigateUri = "https://www.google.com",
-            Name = "Project 1",
-            Description = "Description of Project 1",
-            ImageUrl = $"https://picsum.photos/200?random=${Random.Shared.NextInt64(1,10000)}",
-            ProjectName = "a"
-        },
-        new Data()
+            <div class="col">
+                <img src="@item.ImageUrl"
+                     @onclick="()=> LoadContent(item)"
+                     data-bs-toggle="modal"
+                     data-bs-target="@($"#{BsModalName}")"
+                     class="gallery-img rounded shadow-sm"
+                     data-title="@item.Name"
+                     data-description="@item.Description"
+                     alt="@item.Name">
+            </div>
+        }
+
+        if (_modelData != null)
         {
-            NavigateUri = "https://www.google.com",
-            Name = "Project 1",
-            Description = "Description of Project 1",
-            ImageUrl = $"https://picsum.photos/200?random=${Random.Shared.NextInt64(1,10000)}",
-            ProjectName = "a"
-        },
-        new Data()
-        {
-            NavigateUri = "https://www.google.com",
-            Name = "Project 1",
-            Description = "Description of Project 1",
-            ImageUrl = $"https://picsum.photos/200?random=${Random.Shared.NextInt64(1,10000)}",
-            ProjectName = "a"
-        },
-        new Data()
-        {
-            NavigateUri = "https://www.google.com",
-            Name = "Project 1",
-            Description = "Description of Project 1",
-            ImageUrl = $"https://picsum.photos/200?random=${Random.Shared.NextInt64(1,10000)}",
-            ProjectName = "a"
-        },
-        new Data()
-        {
-            NavigateUri = "https://www.google.com",
-            Name = "Project 1",
-            Description = "Description of Project 1",
-            ImageUrl = $"https://picsum.photos/200?random=${Random.Shared.NextInt64(1,10000)}",
-            ProjectName = "a"
-        },
-        
-    ];
+            <ModelViewerComponents Model="@_modelData" Options="_option" BsModalName="@BsModalName"/>
+        }
+    }
+    else
+    {
+        <h1>No Data Found</h1>
+    }
 }

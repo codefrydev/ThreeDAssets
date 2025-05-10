@@ -6,9 +6,9 @@ namespace ThreeDAssets.Components;
 public partial class GoToFullScreen : ComponentBase
 {
     [Inject] private IJSRuntime Js { get; set; } = null!;
-    [Parameter] public string ElementId { get; set; } = "model-viewer";  
+    [Parameter] public string ElementId { get; set; } = "model-viewer";
     private bool _isFullScreen;
-    private  DotNetObjectReference<GoToFullScreen>? _objRef ;
+    private DotNetObjectReference<GoToFullScreen>? _objRef;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -35,5 +35,4 @@ public partial class GoToFullScreen : ComponentBase
         _isFullScreen = isFull;
         StateHasChanged();
     }
-
 }
