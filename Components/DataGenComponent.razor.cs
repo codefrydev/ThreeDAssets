@@ -8,63 +8,63 @@ namespace ThreeDAssets.Components;
 
 public partial class DataGenComponent : ComponentBase
 {
-    private DataModel dataModelRefeModel = new();
-    [Inject] private IJSRuntime JS { get; set; } = null!;
+    private readonly DataModel _dataModelRefeModel = new();
+    [Inject] private IJSRuntime Js { get; set; } = null!;
 
-    private string? deserializedJson; // For showing in modal
+    private string? _deserializedJson; // For showing in modal
 
     private async Task HandleValidSubmit()
     {
         var dataModel = new DataRequestModel
         {
-            AltText = dataModelRefeModel.AltText.Value,
-            Description = dataModelRefeModel.Description.Value,
-            IosSrc = dataModelRefeModel.IosSrc.Value,
-            IsFavourite = dataModelRefeModel.IsFavourite,
-            Name = dataModelRefeModel.Name.Value,
-            Poster = dataModelRefeModel.Poster.Value,
-            Source = dataModelRefeModel.Source.Value,
-            Thumbnail = dataModelRefeModel.Thumbnail.Value,
-            AnimationNames = dataModelRefeModel.AnimationNames.Select(x => x.Value).ToList(),
-            EnvironmentImages = dataModelRefeModel.EnvironmentImages.Select(x => x.Value).ToList(),
-            SkyboxImages = dataModelRefeModel.SkyboxImages.Select(x => x.Value).ToList()
+            AltText = _dataModelRefeModel.AltText.Value,
+            Description = _dataModelRefeModel.Description.Value,
+            IosSrc = _dataModelRefeModel.IosSrc.Value,
+            IsFavourite = _dataModelRefeModel.IsFavourite,
+            Name = _dataModelRefeModel.Name.Value,
+            Poster = _dataModelRefeModel.Poster.Value,
+            Source = _dataModelRefeModel.Source.Value,
+            Thumbnail = _dataModelRefeModel.Thumbnail.Value,
+            AnimationNames = _dataModelRefeModel.AnimationNames.Select(x => x.Value).ToList(),
+            EnvironmentImages = _dataModelRefeModel.EnvironmentImages.Select(x => x.Value).ToList(),
+            SkyboxImages = _dataModelRefeModel.SkyboxImages.Select(x => x.Value).ToList()
         };
 
-        var json = JsonSerializer.Serialize(dataModel, new JsonSerializerOptions { WriteIndented = true });
-        await JS.InvokeVoidAsync("navigator.clipboard.writeText", json);
+        var json = JsonSerializer.Serialize(dataModel, options: new JsonSerializerOptions { WriteIndented = true });
+        await Js.InvokeVoidAsync("navigator.clipboard.writeText", json);
 
-        deserializedJson = json;
-        await JS.InvokeVoidAsync("bootstrapInterop.showModal", "#jsonModal");
+        _deserializedJson = json;
+        await Js.InvokeVoidAsync("bootstrapInterop.showModal", "#jsonModal");
     }
 
 
     private void AddAnimation()
     {
-        dataModelRefeModel.AnimationNames.Add(new ModelReference());
+        _dataModelRefeModel.AnimationNames.Add(new ModelReference());
     }
 
     private void RemoveAnimation(ModelReference modelReference)
     {
-        dataModelRefeModel.AnimationNames.Remove(modelReference);
+        _dataModelRefeModel.AnimationNames.Remove(modelReference);
     }
 
     private void AddEnvironment()
     {
-        dataModelRefeModel.EnvironmentImages.Add(new ModelReference());
+        _dataModelRefeModel.EnvironmentImages.Add(new ModelReference());
     }
 
     private void RemoveEnvironment(ModelReference modelReference)
     {
-        dataModelRefeModel.EnvironmentImages.Remove(modelReference);
+        _dataModelRefeModel.EnvironmentImages.Remove(modelReference);
     }
 
     private void AddSkybox()
     {
-        dataModelRefeModel.SkyboxImages.Add(new ModelReference());
+        _dataModelRefeModel.SkyboxImages.Add(new ModelReference());
     }
 
     private void RemoveSkybox(ModelReference modelReference)
     {
-        dataModelRefeModel.SkyboxImages.Remove(modelReference);
+        _dataModelRefeModel.SkyboxImages.Remove(modelReference);
     }
 }

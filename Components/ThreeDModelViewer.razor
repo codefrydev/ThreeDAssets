@@ -105,7 +105,7 @@
                 <select @bind="Model.SkyboxImage" class="form-select">
                     @foreach (var item in Options.SkyboxImages)
                     {
-                        <option value="@item">@item</option>
+                        <option value="@item">@item?.Split("/").Last()</option>
                     }
                 </select>
             </div>
@@ -117,7 +117,7 @@
                 <select @bind="Model.EnvironmentImage" class="form-select">
                     @foreach (var item in Options.EnvironmentImages)
                     {
-                        <option value="@item">@item</option>
+                        <option value="@item">@item?.Split("/").Last()</option>
                     }
                 </select>
             </div>

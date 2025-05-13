@@ -13,7 +13,7 @@ else
     {
         foreach (var item in _allModelDataFromGithub)
         {
-            <div class="col">
+            <div class="col zoom-on-hover">
                 <img src="@item.ImageUrl"
                      @onclick="()=> LoadContent(item)"
                      data-bs-toggle="modal"
@@ -37,3 +37,18 @@ else
         <h1>No Data Found</h1>
     }
 }
+<style>
+    .zoom-on-hover {
+        /* Smooth transition for both transform and any box-shadow */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* Optional: keep the element from cropping its scaled contents */
+        overflow: hidden;
+    }
+
+    .zoom-on-hover:hover {
+        /* Scale up just a bit */
+        transform: scale(1.05);
+        /* Optional: add a soft shadow to emphasize the “lift” */
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+</style>

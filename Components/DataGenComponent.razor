@@ -1,24 +1,24 @@
-<EditForm Model="dataModelRefeModel" OnValidSubmit="HandleValidSubmit" class="card shadow-lg rounded-4 p-5 my-5">
+<EditForm Model="_dataModelRefeModel" OnValidSubmit="HandleValidSubmit" class="card shadow-lg rounded-4 p-5 my-5">
     <DataAnnotationsValidator/>
     <ValidationSummary class="text-danger mb-4"/>
 
     <div class="row g-4">
         <div class="col-md-6">
             <div class="form-floating">
-                <InputText id="name" class="form-control form-control-lg" @bind-Value="dataModelRefeModel.Name.Value" required/>
+                <InputText id="name" class="form-control form-control-lg" @bind-Value="_dataModelRefeModel.Name.Value" required/>
                 <label for="name">Name</label>
             </div>
         </div>
         <div class="col-md-6 d-flex align-items-center">
             <div class="form-check form-switch ms-3">
-                <InputCheckbox id="isFav" class="form-check-input" @bind-Value="dataModelRefeModel.IsFavourite"/>
+                <InputCheckbox id="isFav" class="form-check-input" @bind-Value="_dataModelRefeModel.IsFavourite"/>
                 <label class="form-check-label ms-2" for="isFav">Favourite</label>
             </div>
         </div>
 
         <div class="col-12">
             <div class="form-floating">
-                <InputText id="thumbnail" class="form-control" @bind-Value="dataModelRefeModel.Thumbnail.Value"
+                <InputText id="thumbnail" class="form-control" @bind-Value="_dataModelRefeModel.Thumbnail.Value"
                            placeholder="Thumbnail URL" required/>
                 <label for="thumbnail">Thumbnail URL</label>
             </div>
@@ -26,7 +26,7 @@
 
         <div class="col-12">
             <div class="form-floating">
-                <InputTextArea id="description" class="form-control" @bind-Value="dataModelRefeModel.Description.Value"
+                <InputTextArea id="description" class="form-control" @bind-Value="_dataModelRefeModel.Description.Value"
                                Rows="3" placeholder="Description" required/>
                 <label for="description">Description</label>
             </div>
@@ -34,7 +34,7 @@
 
         <div class="col-12">
             <div class="form-floating">
-                <InputText id="source" class="form-control" @bind-Value="dataModelRefeModel.Source.Value"
+                <InputText id="source" class="form-control" @bind-Value="_dataModelRefeModel.Source.Value"
                            placeholder="GLB Source URL" required/>
                 <label for="source">Source (GLB URL)</label>
             </div>
@@ -42,14 +42,14 @@
 
         <div class="col-md-6">
             <div class="form-floating">
-                <InputText id="poster" class="form-control" @bind-Value="dataModelRefeModel.Poster.Value"
+                <InputText id="poster" class="form-control" @bind-Value="_dataModelRefeModel.Poster.Value"
                            placeholder="Poster Filename or URL" required/>
                 <label for="poster">Poster</label>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-floating">
-                <InputText id="altText" class="form-control" @bind-Value="dataModelRefeModel.AltText.Value"
+                <InputText id="altText" class="form-control" @bind-Value="_dataModelRefeModel.AltText.Value"
                            placeholder="Alt Text" required/>
                 <label for="altText">Alt Text</label>
             </div>
@@ -57,7 +57,7 @@
 
         <div class="col-12">
             <div class="form-floating">
-                <InputText id="iosSrc" class="form-control" @bind-Value="dataModelRefeModel.IosSrc.Value"
+                <InputText id="iosSrc" class="form-control" @bind-Value="_dataModelRefeModel.IosSrc.Value"
                            placeholder="iOS Source URL" required/>
                 <label for="iosSrc">iOS Source</label>
             </div>
@@ -72,7 +72,7 @@
             <div class="card border-0 shadow-sm rounded-3">
                 <div class="card-header bg-primary text-white fw-semibold">Animation Names</div>
                 <div class="card-body">
-                    @foreach (var animation in dataModelRefeModel.AnimationNames)
+                    @foreach (var animation in _dataModelRefeModel.AnimationNames)
                     {
                         <div class="input-group mb-2">
                             <InputText class="form-control" @bind-Value="animation.Value" placeholder="Animation name"/>
@@ -92,7 +92,7 @@
             <div class="card border-0 shadow-sm rounded-3">
                 <div class="card-header bg-success text-white fw-semibold">Environment Images</div>
                 <div class="card-body">
-                    @foreach (var env in dataModelRefeModel.EnvironmentImages)
+                    @foreach (var env in _dataModelRefeModel.EnvironmentImages)
                     {
                         <div class="input-group mb-2">
                             <InputText class="form-control" @bind-Value="env.Value" placeholder="Image URL"/>
@@ -112,7 +112,7 @@
             <div class="card border-0 shadow-sm rounded-3">
                 <div class="card-header bg-info text-white fw-semibold">Skybox Images</div>
                 <div class="card-body">
-                    @foreach (var skybox in dataModelRefeModel.SkyboxImages)
+                    @foreach (var skybox in _dataModelRefeModel.SkyboxImages)
                     {
                         <div class="input-group mb-2">
                             <InputText class="form-control" @bind-Value="skybox.Value" placeholder="Skybox URL"/>
@@ -140,7 +140,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <pre class="bg-light p-3 rounded"><code>@deserializedJson</code></pre>
+                <pre class="bg-light p-3 rounded"><code>@_deserializedJson</code></pre>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
