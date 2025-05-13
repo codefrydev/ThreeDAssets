@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "ThreeDAssets",
   "resources": {
-    "hash": "sha256-LPW+nZTekgGNEf6kIA20zJc9G8Th8Jng+htGS1RPQxY=",
+    "hash": "sha256-ZsV1aOvSEgYuKUhHdkdNo0O0vJz4RLZUh6GRRW3B+W8=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Components.Forms.tsij7kcdu0.wasm": "Microsoft.AspNetCore.Components.Forms.wasm",
       "Microsoft.AspNetCore.Components.hnbfdvmwf1.wasm": "Microsoft.AspNetCore.Components.wasm",
@@ -31,7 +31,7 @@
       "System.Diagnostics.DiagnosticSource.4ftkfrxd4q.wasm": "System.Diagnostics.DiagnosticSource.wasm",
       "System.IO.Pipelines.0uhw8kopg1.wasm": "System.IO.Pipelines.wasm",
       "System.Linq.Expressions.5keaquv3f9.wasm": "System.Linq.Expressions.wasm",
-      "System.Linq.oqb4tjy931.wasm": "System.Linq.wasm",
+      "System.Linq.pllkqjzhya.wasm": "System.Linq.wasm",
       "System.Memory.gxk30wm3qo.wasm": "System.Memory.wasm",
       "System.Net.Http.t8jgsth05c.wasm": "System.Net.Http.wasm",
       "System.Net.Primitives.9x72ktbyas.wasm": "System.Net.Primitives.wasm",
@@ -41,12 +41,12 @@
       "System.Runtime.InteropServices.JavaScript.era55l3sbb.wasm": "System.Runtime.InteropServices.JavaScript.wasm",
       "System.Runtime.InteropServices.43itvhifa2.wasm": "System.Runtime.InteropServices.wasm",
       "System.Runtime.Serialization.Primitives.6wjui9dnma.wasm": "System.Runtime.Serialization.Primitives.wasm",
-      "System.Runtime.3l7n1bz3pq.wasm": "System.Runtime.wasm",
+      "System.Runtime.p15jdu3in1.wasm": "System.Runtime.wasm",
       "System.Text.Encodings.Web.5w28q6ifw5.wasm": "System.Text.Encodings.Web.wasm",
       "System.Text.Json.iqwk8w69xa.wasm": "System.Text.Json.wasm",
       "System.Text.RegularExpressions.gjrc7fe0iy.wasm": "System.Text.RegularExpressions.wasm",
       "System.f0fr8djds0.wasm": "System.wasm",
-      "ThreeDAssets.i31tand64q.wasm": "ThreeDAssets.wasm",
+      "ThreeDAssets.ufw9wkpa02.wasm": "ThreeDAssets.wasm",
       "dotnet.js": "dotnet.js",
       "dotnet.native.hvg7u8bimp.js": "dotnet.native.js",
       "dotnet.native.3c4wvb350q.wasm": "dotnet.native.wasm",
@@ -102,7 +102,7 @@
       "System.Diagnostics.DiagnosticSource.4ftkfrxd4q.wasm": "sha256-8NykjQPqDkEb8MybywkzTKLeF69Y61NlxLdJvCVC8wQ=",
       "System.IO.Pipelines.0uhw8kopg1.wasm": "sha256-uEVVMYx7abWgasKfPzSB6wOMoCpVEVv4EcEAOCa4ph0=",
       "System.Linq.Expressions.5keaquv3f9.wasm": "sha256-y1WuK0s3rWj1fqt2B95oirSfiWDqd2QzvbHs3vE2LMk=",
-      "System.Linq.oqb4tjy931.wasm": "sha256-cN3rYzum5Gp8Ul7HE+qNkr3cZOUrGJfx8NnMBvvviRc=",
+      "System.Linq.pllkqjzhya.wasm": "sha256-XaBOB6l/NBsarhKwxA5kwgweFBmwv67wIZfU4CGQQ7I=",
       "System.Memory.gxk30wm3qo.wasm": "sha256-tCznIAaQdysSsBlri4JhpkOJQ4Nhsopc01TKAJP/ByY=",
       "System.Net.Http.t8jgsth05c.wasm": "sha256-k/r8VaBGcIvgMaDnhwKGguknzo+JAEcaFeesm2FhbXU=",
       "System.Net.Primitives.9x72ktbyas.wasm": "sha256-nezaQh05iG5l4rQswqNPl/zET8UwMn5b44CpxdCrhyQ=",
@@ -110,12 +110,12 @@
       "System.Private.Uri.137ccgcklz.wasm": "sha256-3Tp5I1CTHlpuBN+pb8vwGC5u+mDb3ar8wyokKvyHPw8=",
       "System.Runtime.InteropServices.43itvhifa2.wasm": "sha256-MLwEW/INv7jUETOU/4f6CgFJYuFzB3Ds+9yBPF+h8tg=",
       "System.Runtime.Serialization.Primitives.6wjui9dnma.wasm": "sha256-NmYMQHBLs7lgIXDfLv3qMr2BXadxAMWLjqs3C6djLCw=",
-      "System.Runtime.3l7n1bz3pq.wasm": "sha256-JyN64joZzYZNWuTM4swnP1v806qC7DDXKOl5gKyaVpA=",
+      "System.Runtime.p15jdu3in1.wasm": "sha256-s0pdxTxanQuueBxpqFqJrjz33SApXr3XQBJc2TpzUDQ=",
       "System.Text.Encodings.Web.5w28q6ifw5.wasm": "sha256-pdKoJJI3yt1NF2Lx1MGO++1RtPSzree8qeWFFtJOnKo=",
       "System.Text.Json.iqwk8w69xa.wasm": "sha256-RvU7Mp7F8sWdTRhjbU/B4bCsVmjcTFfyUcPl4IGFze4=",
       "System.Text.RegularExpressions.gjrc7fe0iy.wasm": "sha256-bPlopc5D66ZLknzJ5PcpsBvpXxGmy7xL7+4gm/cjTdc=",
       "System.f0fr8djds0.wasm": "sha256-v1DeJU321NUwk3KJ0Lf8lQA3zwRfrxNommmMBs1s3Gk=",
-      "ThreeDAssets.i31tand64q.wasm": "sha256-Mv/gxfAzHOS3/TsFjIZ/dWjRC9ce9538xKzp6+I77XM="
+      "ThreeDAssets.ufw9wkpa02.wasm": "sha256-hvOgP2gHOlLvSAUau+GsuAwbDznqkT+cKKBLgyRUCJk="
     }
   },
   "cacheBootResources": true,

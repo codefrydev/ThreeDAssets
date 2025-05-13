@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "9bMtRnpc",
+  "version": "VasSqBq3",
   "assets": [
     {
       "hash": "sha256-cV+qjnN8bquzT4hXs5LUCEz6zL8BT7X1ytCAWCq2pic=",
@@ -118,8 +118,8 @@ self.assetsManifest = {
       "url": "_framework/System.Linq.Expressions.5keaquv3f9.wasm"
     },
     {
-      "hash": "sha256-cN3rYzum5Gp8Ul7HE+qNkr3cZOUrGJfx8NnMBvvviRc=",
-      "url": "_framework/System.Linq.oqb4tjy931.wasm"
+      "hash": "sha256-XaBOB6l/NBsarhKwxA5kwgweFBmwv67wIZfU4CGQQ7I=",
+      "url": "_framework/System.Linq.pllkqjzhya.wasm"
     },
     {
       "hash": "sha256-tCznIAaQdysSsBlri4JhpkOJQ4Nhsopc01TKAJP/ByY=",
@@ -146,10 +146,6 @@ self.assetsManifest = {
       "url": "_framework/System.Private.Uri.137ccgcklz.wasm"
     },
     {
-      "hash": "sha256-JyN64joZzYZNWuTM4swnP1v806qC7DDXKOl5gKyaVpA=",
-      "url": "_framework/System.Runtime.3l7n1bz3pq.wasm"
-    },
-    {
       "hash": "sha256-MLwEW/INv7jUETOU/4f6CgFJYuFzB3Ds+9yBPF+h8tg=",
       "url": "_framework/System.Runtime.InteropServices.43itvhifa2.wasm"
     },
@@ -160,6 +156,10 @@ self.assetsManifest = {
     {
       "hash": "sha256-NmYMQHBLs7lgIXDfLv3qMr2BXadxAMWLjqs3C6djLCw=",
       "url": "_framework/System.Runtime.Serialization.Primitives.6wjui9dnma.wasm"
+    },
+    {
+      "hash": "sha256-s0pdxTxanQuueBxpqFqJrjz33SApXr3XQBJc2TpzUDQ=",
+      "url": "_framework/System.Runtime.p15jdu3in1.wasm"
     },
     {
       "hash": "sha256-pdKoJJI3yt1NF2Lx1MGO++1RtPSzree8qeWFFtJOnKo=",
@@ -178,11 +178,11 @@ self.assetsManifest = {
       "url": "_framework/System.f0fr8djds0.wasm"
     },
     {
-      "hash": "sha256-Mv/gxfAzHOS3/TsFjIZ/dWjRC9ce9538xKzp6+I77XM=",
-      "url": "_framework/ThreeDAssets.i31tand64q.wasm"
+      "hash": "sha256-hvOgP2gHOlLvSAUau+GsuAwbDznqkT+cKKBLgyRUCJk=",
+      "url": "_framework/ThreeDAssets.ufw9wkpa02.wasm"
     },
     {
-      "hash": "sha256-oqFFww3I9WD/qbTGVb2EXflw2oxLAQYoxbXmnMMK7Aw=",
+      "hash": "sha256-QK5oKbVSGqrH4q2rKpNrUSUlfF1AryP5hucmYU9XDlM=",
       "url": "_framework/blazor.boot.json"
     },
     {
@@ -226,7 +226,7 @@ self.assetsManifest = {
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-v3Ff5SInTr8qHD64NrefNHAawmfBuPoMXhmXtyDF2dQ=",
+      "hash": "sha256-mPaiFd3IZT6QnkHO80v3Qbfu0jyc2pR0hiM5lxq0BDQ=",
       "url": "index.html"
     },
     {
