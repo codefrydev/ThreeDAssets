@@ -12,6 +12,7 @@ public partial class DataGenComponent : ComponentBase
     [Inject] private IJSRuntime Js { get; set; } = null!;
 
     private string? _deserializedJson; // For showing in modal
+    private bool _isJsonModalVisible = false;
 
     private async Task HandleValidSubmit()
     {
@@ -34,9 +35,28 @@ public partial class DataGenComponent : ComponentBase
         await Js.InvokeVoidAsync("navigator.clipboard.writeText", json);
 
         _deserializedJson = json;
-        await Js.InvokeVoidAsync("bootstrapInterop.showModal", "#jsonModal");
+        _isJsonModalVisible = true;
+        StateHasChanged();
     }
 
+    private void CloseJsonModal()
+    {
+        _isJsonModalVisible = false;
+        StateHasChanged();
+    }
+
+    private async Task CopyToClipboard()
+    {
+        if (!string.IsNullOrEmpty(_deserializedJson))
+        {
+            var success = await Js.InvokeAsync<bool>("copyToClipboard", _deserializedJson);
+            if (success)
+            {
+                // You could add a toast notification here
+                Console.WriteLine("Copied to clipboard successfully!");
+            }
+        }
+    }
 
     private void AddAnimation()
     {

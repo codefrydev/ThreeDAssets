@@ -1,8 +1,15 @@
 ﻿@inherits LayoutComponentBase
-<NavBar/>
-<main class="container gallery-container d-flex justify-content-center align-items-center">
-    <div id="galleryRow" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"> 
-        @Body
-    </div>
-</main>
-<FooterSection/>
+
+<div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <NavBar/>
+    
+    <main class="gallery-container">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8" id="galleryRow">
+                @Body
+            </div>
+        </div>
+    </main>
+    
+    <FooterSection/>
+</div>

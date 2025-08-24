@@ -1,15 +1,26 @@
 @if (_isFullScreen)
 {
-    <button type="button" class="btn btn-outline-transparent" @onclick="GoExit">
-        <i class="bi bi-x-circle"></i>
+    <button type="button" 
+            class="absolute top-4 right-4 z-10 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white hover:shadow-xl transition-all duration-200 group" 
+            @onclick="GoExit"
+            title="Exit Full Screen">
+        <svg class="w-6 h-6 text-gray-700 group-hover:text-red-600 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
     </button>
 }
 else
 {
-    <button type="button" class="btn btn-outline-transparent" @onclick="GoFull">
-        <i class="bi bi-fullscreen"></i>
+    <button type="button" 
+            class="absolute top-4 right-4 z-10 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white hover:shadow-xl transition-all duration-200 group" 
+            @onclick="GoFull"
+            title="Enter Full Screen">
+        <svg class="w-6 h-6 text-gray-700 group-hover:text-blue-600 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+        </svg>
     </button>
 }
+
 <script>
     window.openFullScreen = (elementId) => {
         const elem = document.getElementById(elementId);
