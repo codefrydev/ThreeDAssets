@@ -8,6 +8,15 @@
     <base href="/ThreeDAssets/"/>
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+    
+    <!-- Theme initialization script to prevent flash -->
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 
+                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.classList.toggle('dark', theme === 'dark');
+        })();
+    </script>
     <link href="manifest.webmanifest" rel="manifest"/>
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png"/>
     <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png"/>
@@ -31,16 +40,16 @@
         }
         
         ::-webkit-scrollbar-track {
-            background: #f8fafc;
+            background: var(--bg-secondary);
         }
         
         ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
+            background: var(--border-primary);
             border-radius: 4px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
+            background: var(--text-muted);
         }
         
         /* Smooth scrolling */
@@ -74,9 +83,10 @@
         }
     </style>
     <link href="ThreeDAssets.styles.css" rel="stylesheet"/>
+    <link href="css/themes.css" rel="stylesheet"/>
 </head>
 
-<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen">
+<body class="min-h-screen">
 <div id="app">
     <!-- Enhanced Loading Screen -->
     <div class="fixed inset-0 z-50 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
