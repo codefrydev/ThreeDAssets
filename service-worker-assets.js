@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "2aD+oTam",
+  "version": "KnX6WKj7",
   "assets": [
     {
       "hash": "sha256-E+Mt2ZudWTjGMLQsukw6qCNFOIHlFp8txQmPHDNWw0w=",
@@ -178,11 +178,11 @@ self.assetsManifest = {
       "url": "_framework/System.t8xd33e5pv.wasm"
     },
     {
-      "hash": "sha256-x/4/imZ+Db3w1iMigKsQGkevd16KbOEgmiSpAa0NNG4=",
-      "url": "_framework/ThreeDAssets.ll7jkkz72a.wasm"
+      "hash": "sha256-f/esVyoHOGEbxZiplhZ7r+oITedyRrRPoDCcndcJy8k=",
+      "url": "_framework/ThreeDAssets.7apyzstmbk.wasm"
     },
     {
-      "hash": "sha256-mSS4E3AVT4HNZLwFrjb69eZahw3aplcFTVciehNxsIo=",
+      "hash": "sha256-9K3wezF5gsMnpE4QH8eBmZ0e0YPIyf87exMSvwSCdE4=",
       "url": "_framework/blazor.boot.json"
     },
     {
