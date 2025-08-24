@@ -3,6 +3,7 @@
 @implements IDisposable
 
 @code {
+
     protected override async Task OnInitializedAsync()
     {
         await ThemeService.InitializeThemeAsync();
@@ -12,4 +13,5 @@
     {
         // Cleanup if needed
     }
+
 }

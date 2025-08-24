@@ -1,6 +1,7 @@
 # ThreeDAssets - Modern 3D Model Gallery
 
-A beautiful, responsive web application built with Blazor WebAssembly for showcasing and viewing 3D models with AR capabilities, built-in data generation tools, and a modern UI.
+A beautiful, responsive web application built with Blazor WebAssembly for showcasing and viewing 3D models with AR
+capabilities, built-in data generation tools, and a modern UI.
 
 ![ThreeDAssets Preview](https://img.shields.io/badge/ThreeDAssets-3D%20Gallery-blue?style=for-the-badge&logo=blazor)
 ![Blazor](https://img.shields.io/badge/Blazor-WebAssembly-purple?style=for-the-badge&logo=blazor)
@@ -85,10 +86,10 @@ ThreeDAssets/
 ### 2. Viewing 3D Models
 
 - **Click to View**: Click on any model thumbnail to open the 3D viewer
-- **Camera Controls**: 
-  - Left click + drag to rotate
-  - Right click + drag to pan
-  - Scroll to zoom
+- **Camera Controls**:
+    - Left click + drag to rotate
+    - Right click + drag to pan
+    - Scroll to zoom
 - **Fullscreen Mode**: Click the fullscreen button for immersive viewing
 - **AR Mode**: Use AR features on compatible mobile devices
 
@@ -126,6 +127,7 @@ The application uses Tailwind CSS for styling. Customize the appearance by:
 3. **Register any services** in `Program.cs` if needed
 
 Example:
+
 ```razor
 @* Components/MyCustomComponent.razor *@
 <div class="bg-white rounded-lg p-4">
@@ -151,6 +153,7 @@ To add new fields to 3D models:
 4. **Add any required models** and services
 
 Example:
+
 ```razor
 @* Pages/About.razor *@
 @page "/about"
@@ -251,8 +254,8 @@ ENTRYPOINT ["dotnet", "ThreeDAssets.dll"]
 1. **Push to GitHub** with your changes
 2. **Connect to Azure Static Web Apps**
 3. **Configure build settings**:
-   - Build command: `dotnet build --configuration Release`
-   - Output location: `bin/Release/net9.0/publish/wwwroot`
+    - Build command: `dotnet build --configuration Release`
+    - Output location: `bin/Release/net9.0/publish/wwwroot`
 
 ## 📱 Browser Support
 
@@ -326,4 +329,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Made with ❤️ using Blazor WebAssembly and Tailwind CSS**
 
-For more information, visit the [live project](https://codefrydev.in/ThreeDAssets/) or check out the [GitHub repository](https://github.com/codefrydev/ThreeDAssets).
+For more information, visit the [live project](https://codefrydev.in/ThreeDAssets/) or check out
+the [GitHub repository](https://github.com/codefrydev/ThreeDAssets).

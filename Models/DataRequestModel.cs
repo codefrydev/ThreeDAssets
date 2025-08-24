@@ -14,9 +14,9 @@ public class DataRequestModel
     public string AltText { get; set; } = "3D Model";
     public string IosSrc { get; set; } = "";
 
-    public List<string> AnimationNames { get; set; } =[];
+    public List<string> AnimationNames { get; set; } = [];
 
-    public List<string> EnvironmentImages { get; set; } =[];
+    public List<string> EnvironmentImages { get; set; } = [];
 
-    public List<string> SkyboxImages { get; set; } =[];
+    public List<string> SkyboxImages { get; set; } = [];
 }

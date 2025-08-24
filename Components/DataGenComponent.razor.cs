@@ -31,7 +31,7 @@ public partial class DataGenComponent : ComponentBase
             SkyboxImages = _dataModelRefeModel.SkyboxImages.Select(x => x.Value).ToList()
         };
 
-        var json = JsonSerializer.Serialize(dataModel, options: new JsonSerializerOptions { WriteIndented = true });
+        var json = JsonSerializer.Serialize(dataModel, new JsonSerializerOptions { WriteIndented = true });
         await Js.InvokeVoidAsync("navigator.clipboard.writeText", json);
 
         _deserializedJson = json;
@@ -51,10 +51,8 @@ public partial class DataGenComponent : ComponentBase
         {
             var success = await Js.InvokeAsync<bool>("copyToClipboard", _deserializedJson);
             if (success)
-            {
                 // You could add a toast notification here
                 Console.WriteLine("Copied to clipboard successfully!");
-            }
         }
     }
 

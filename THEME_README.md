@@ -2,7 +2,8 @@
 
 ## Overview
 
-The ThreeDAssets application now includes a comprehensive theme system that supports both light and dark themes. The system automatically detects user preferences and provides smooth transitions between themes.
+The ThreeDAssets application now includes a comprehensive theme system that supports both light and dark themes. The
+system automatically detects user preferences and provides smooth transitions between themes.
 
 ## ✨ Features
 
@@ -71,6 +72,7 @@ Inject the `ThemeService` in your components to programmatically control themes:
 ## 🎨 Theme Colors
 
 ### Light Theme
+
 - **Primary Background**: `#ffffff` (White)
 - **Secondary Background**: `#f8fafc` (Light Gray)
 - **Primary Text**: `#0f172a` (Dark Gray)
@@ -79,6 +81,7 @@ Inject the `ThemeService` in your components to programmatically control themes:
 - **Accent**: `#3b82f6` (Blue)
 
 ### Dark Theme
+
 - **Primary Background**: `#0f172a` (Dark Blue)
 - **Secondary Background**: `#1e293b` (Medium Blue)
 - **Primary Text**: `#f8fafc` (Light Gray)

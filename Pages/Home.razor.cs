@@ -18,7 +18,7 @@ public partial class Home : IDisposable
     private List<Data> _currentPageModels = [];
     private bool _isLoading = true;
     private bool _isPopupVisible = false;
-    
+
     // Pagination properties
     private int _currentPage = 1;
     private int _pageSize = 12; // Show 12 models per page
@@ -70,16 +70,13 @@ public partial class Home : IDisposable
     protected override async Task OnInitializedAsync()
     {
         _isLoading = true;
-        
+
         // Subscribe to favorite state changes
         Helper.FavoriteStateChanged += OnFavoriteStateChanged;
-        
+
         await FetchDataAsync();
         UpdateDisplayedModels();
-        if (_allModelDataFromGithub.Count > 0)
-        {
-            _modelData = _allModelDataFromGithub.FirstOrDefault()?.ModelViewer;
-        }
+        if (_allModelDataFromGithub.Count > 0) _modelData = _allModelDataFromGithub.FirstOrDefault()?.ModelViewer;
         _isLoading = false;
         await base.OnInitializedAsync();
     }
@@ -96,26 +93,22 @@ public partial class Home : IDisposable
         _currentPage = 1; // Reset to first page when filtering
         UpdatePagination();
     }
-    
+
     private void UpdatePagination()
     {
         _totalPages = (int)Math.Ceiling((double)_allModelDataFromGithub.Count / _pageSize);
         _totalPages = Math.Max(1, _totalPages); // Ensure at least 1 page
         _currentPage = Math.Min(_currentPage, _totalPages); // Ensure current page is valid
-        
+
         var startIndex = (_currentPage - 1) * _pageSize;
         var endIndex = Math.Min(startIndex + _pageSize, _allModelDataFromGithub.Count);
-        
+
         if (startIndex < _allModelDataFromGithub.Count)
-        {
             _currentPageModels = _allModelDataFromGithub.GetRange(startIndex, endIndex - startIndex);
-        }
         else
-        {
             _currentPageModels = new List<Data>();
-        }
     }
-    
+
     private void GoToPage(int page)
     {
         if (page >= 1 && page <= _totalPages && page != _currentPage)
@@ -125,33 +118,27 @@ public partial class Home : IDisposable
             StateHasChanged();
         }
     }
-    
+
     private void GoToNextPage()
     {
-        if (_currentPage < _totalPages)
-        {
-            GoToPage(_currentPage + 1);
-        }
+        if (_currentPage < _totalPages) GoToPage(_currentPage + 1);
     }
-    
+
     private void GoToPreviousPage()
     {
-        if (_currentPage > 1)
-        {
-            GoToPage(_currentPage - 1);
-        }
+        if (_currentPage > 1) GoToPage(_currentPage - 1);
     }
-    
+
     private void GoToFirstPage()
     {
         GoToPage(1);
     }
-    
+
     private void GoToLastPage()
     {
         GoToPage(_totalPages);
     }
-    
+
     private void ChangePageSize(int newPageSize)
     {
         if (newPageSize != _pageSize)

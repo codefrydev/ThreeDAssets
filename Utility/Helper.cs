@@ -7,13 +7,13 @@ public class Helper
     private static bool _isFavouriteClicked = false;
     public static List<Data> AllModelData = [];
     public static List<Data> FavouriteModelData = [];
-    
+
     public static event Action? FavoriteStateChanged;
-    
-    public static bool IsFavouriteClicked 
-    { 
+
+    public static bool IsFavouriteClicked
+    {
         get => _isFavouriteClicked;
-        set 
+        set
         {
             if (_isFavouriteClicked != value)
             {
