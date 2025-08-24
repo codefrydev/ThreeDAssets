@@ -27,8 +27,42 @@ public partial class Home : IDisposable
 
     private void LoadContent(Data conData)
     {
-        _modelData = conData.ModelViewer;
+        // Ensure a new instance is assigned so Blazor re-renders with the correct model
+        _modelData = new ModelViewer
+        {
+            Source = conData.ModelViewer.Source,
+            Poster = conData.ModelViewer.Poster,
+            AltText = conData.ModelViewer.AltText,
+            IosSrc = conData.ModelViewer.IosSrc,
+            EnvironmentImage = conData.ModelViewer.EnvironmentImage,
+            SkyboxImage = conData.ModelViewer.SkyboxImage,
+            BackgroundColor = conData.ModelViewer.BackgroundColor,
+            CameraControls = conData.ModelViewer.CameraControls,
+            AutoRotate = conData.ModelViewer.AutoRotate,
+            DisablePan = conData.ModelViewer.DisablePan,
+            DisableTap = conData.ModelViewer.DisableTap,
+            AnimationName = conData.ModelViewer.AnimationName,
+            AnimationCrossfadeDuration = conData.ModelViewer.AnimationCrossfadeDuration,
+            CameraOrbit = conData.ModelViewer.CameraOrbit,
+            MaxCameraOrbit = conData.ModelViewer.MaxCameraOrbit,
+            MinCameraOrbit = conData.ModelViewer.MinCameraOrbit,
+            FieldOfView = conData.ModelViewer.FieldOfView,
+            MaxFieldOfView = conData.ModelViewer.MaxFieldOfView,
+            MinFieldOfView = conData.ModelViewer.MinFieldOfView,
+            SkyboxHeight = conData.ModelViewer.SkyboxHeight,
+            ToneMapping = conData.ModelViewer.ToneMapping,
+            ShadowIntensity = conData.ModelViewer.ShadowIntensity,
+            ShadowSoftness = conData.ModelViewer.ShadowSoftness,
+            Exposure = conData.ModelViewer.Exposure,
+            Reveal = conData.ModelViewer.Reveal,
+            Loading = conData.ModelViewer.Loading,
+            TouchAction = conData.ModelViewer.TouchAction,
+            EnableAr = conData.ModelViewer.EnableAr,
+            ArModes = conData.ModelViewer.ArModes,
+            ArScale = conData.ModelViewer.ArScale
+        };
         _option = conData.ModelViewerOptions;
+        Helper.CurrentSelectedModel = _modelData;
         _isPopupVisible = true;
         StateHasChanged();
     }

@@ -1,13 +1,51 @@
+@using ThreeDAssets.Utility
+
 @if (_isFullScreen)
 {
-    <button type="button" 
-            class="absolute top-4 right-4 z-10 p-3 bg-theme-primary border border-theme-primary rounded-full shadow-theme-lg hover:bg-theme-secondary hover:shadow-theme-xl transition-all duration-200 group" 
-            @onclick="GoExit"
-            title="Exit Full Screen">
-        <svg class="w-6 h-6 text-theme-primary group-hover:text-theme-accent transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-    </button>
+    <div class="fixed inset-0 bg-black z-50">
+        <model-viewer id="@ElementId-fullscreen"
+                     src="@(Helper.CurrentSelectedModel?.Source ?? ModelData.Source)"
+                     alt="@ModelData.AltText"
+                     ar="@ModelData.EnableAr"
+                     ar-modes="@ModelData.ArModes"
+                     ar-scale="@ModelData.ArScale"
+                     camera-controls="@ModelData.CameraControls"
+                     touch-action="@ModelData.TouchAction"
+                     auto-rotate="@ModelData.AutoRotate"
+                     auto-rotate-delay="@ModelData.AutoRotateDelay"
+                     animation-name="@ModelData.AnimationName"
+                     animation-crossfade-duration="@ModelData.AnimationCrossfadeDuration"
+                     disable-pan="@ModelData.DisablePan"
+                     disable-tap="@ModelData.DisableTap"
+                     camera-orbit="@ModelData.CameraOrbit"
+                     max-camera-orbit="@ModelData.MaxCameraOrbit"
+                     min-camera-orbit="@ModelData.MinCameraOrbit"
+                     field-of-view="@ModelData.FieldOfView"
+                     max-field-of-view="@ModelData.MaxFieldOfView"
+                     min-field-of-view="@ModelData.MinFieldOfView"
+                     environment-image="@ModelData.EnvironmentImage"
+                     skybox-image="@ModelData.SkyboxImage"
+                     skybox-height="@ModelData.SkyboxHeight"
+                     tone-mapping="@ModelData.ToneMapping"
+                     poster="@ModelData.Poster"
+                     shadow-intensity="@ModelData.ShadowIntensity"
+                     shadow-softness="@ModelData.ShadowSoftness"
+                     exposure="@ModelData.Exposure"
+                     ios-src="@ModelData.IosSrc"
+                     reveal="@ModelData.Reveal"
+                     loading="@ModelData.Loading"
+                     background-color="@ModelData.BackgroundColor"
+                     class="w-full h-full">
+        </model-viewer>
+        <button type="button" 
+                class="absolute top-4 right-4 z-10 p-3 bg-theme-primary border border-theme-primary rounded-full shadow-theme-lg hover:bg-theme-secondary hover:shadow-theme-xl transition-all duration-200 group" 
+                @onclick="GoExit"
+                title="Exit Full Screen">
+            <svg class="w-6 h-6 text-theme-primary group-hover:text-theme-accent transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </div>
 }
 else
 {

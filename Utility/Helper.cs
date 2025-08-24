@@ -22,4 +22,6 @@ public class Helper
             }
         }
     }
+
+    public static ModelViewer? CurrentSelectedModel { get; set; }
 }
