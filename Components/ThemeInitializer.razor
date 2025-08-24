@@ -1,0 +1,15 @@
+@using ThreeDAssets.Utility
+@inject ThemeService ThemeService
+@implements IDisposable
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await ThemeService.InitializeThemeAsync();
+    }
+
+    public void Dispose()
+    {
+        // Cleanup if needed
+    }
+}

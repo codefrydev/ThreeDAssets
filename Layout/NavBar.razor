@@ -1,6 +1,6 @@
 @using ThreeDAssets.Utility
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-slate-200/60 shadow-lg shadow-slate-900/5">
+<nav class="fixed top-0 left-0 right-0 z-50 bg-theme-primary/95 backdrop-blur-xl border-b border-theme-primary/60 shadow-theme-lg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16 lg:h-20">
             <!-- Logo/Brand -->
@@ -13,7 +13,7 @@
                         <span class="text-xl lg:text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
                             3D Assets
                         </span>
-                        <p class="text-xs text-slate-500 -mt-1">Premium 3D Models</p>
+                        <p class="text-xs text-theme-muted -mt-1">Premium 3D Models</p>
                     </div>
                 </a>
             </div>
@@ -21,7 +21,7 @@
             <!-- Navigation Links -->
             <div class="hidden lg:flex items-center space-x-1">
                 <button @onclick="AllModelsClicked" 
-                        class="@($"relative px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 group {(Helper.IsFavouriteClicked ? "text-slate-600 hover:text-blue-600 hover:bg-slate-50" : "text-blue-600 bg-blue-50 border border-blue-200")}")">
+                        class="@($"relative px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 group {(Helper.IsFavouriteClicked ? "text-theme-secondary hover:text-blue-600 hover:bg-theme-secondary" : "text-blue-600 bg-blue-50 border border-blue-200")}")">
                     <div class="flex items-center space-x-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
@@ -35,7 +35,7 @@
                 </button>
                 
                 <button @onclick="FavouriteClicked" 
-                        class="@($"relative px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 group {(Helper.IsFavouriteClicked ? "text-blue-600 bg-blue-50 border border-blue-200" : "text-slate-600 hover:text-blue-600 hover:bg-slate-50")}")">
+                        class="@($"relative px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 group {(Helper.IsFavouriteClicked ? "text-blue-600 bg-blue-50 border border-blue-200" : "text-theme-secondary hover:text-blue-600 hover:bg-theme-secondary")}")">
                     <div class="flex items-center space-x-2">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
@@ -48,7 +48,7 @@
                     }
                 </button>
                 
-                <div class="w-px h-8 bg-slate-200 mx-2"></div>
+                <div class="w-px h-8 bg-theme-primary mx-2"></div>
                 
                 <a href="https://codefrydev.in" target="_blank" 
                    class="px-6 py-3 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white text-sm font-semibold rounded-xl hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 hover:scale-105 group">
@@ -61,22 +61,27 @@
                 </a>
             </div>
 
-            <!-- Mobile menu button -->
-            <div class="lg:hidden">
-                <button type="button" 
-                        class="inline-flex items-center justify-center p-2.5 rounded-xl text-slate-700 hover:text-blue-600 hover:bg-slate-100 transition-all duration-200"
-                        @onclick="ToggleMobileMenu">
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
+            <!-- Theme Toggle -->
+            <div class="flex items-center space-x-2">
+                <ThemeToggle />
+                
+                <!-- Mobile menu button -->
+                <div class="lg:hidden">
+                    <button type="button" 
+                            class="inline-flex items-center justify-center p-2.5 rounded-xl text-slate-700 hover:text-blue-600 hover:bg-slate-100 transition-all duration-200"
+                            @onclick="ToggleMobileMenu">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
 
         <!-- Mobile menu -->
         @if (_isMobileMenuOpen)
         {
-            <div class="lg:hidden border-t border-slate-200/60 py-4 space-y-2 bg-white/95 backdrop-blur-xl">
+            <div class="lg:hidden border-t border-theme-primary/60 py-4 space-y-2 bg-theme-primary/95 backdrop-blur-xl">
                 <button @onclick="AllModelsClicked" 
                         class="w-full text-left px-4 py-3 text-base font-semibold rounded-xl transition-all duration-200 mx-2 group">
                     <div class="flex items-center space-x-3 @(Helper.IsFavouriteClicked ? "text-slate-600" : "text-blue-600 bg-blue-50")">
@@ -104,15 +109,6 @@
                         }
                     </div>
                 </button>
-                
-                <a href="/DataGen" class="block px-4 py-3 text-base font-semibold text-slate-600 hover:text-blue-600 hover:bg-slate-50 rounded-xl transition-all duration-200 mx-2">
-                    <div class="flex items-center space-x-3">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                        </svg>
-                        <span>Data Generator</span>
-                    </div>
-                </a>
                 
                 <div class="w-full h-px bg-slate-200 mx-2"></div>
                 

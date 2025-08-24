@@ -30,7 +30,7 @@ A beautiful, responsive web application built with Blazor WebAssembly for showca
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/ThreeDAssets.git
+   git clone https://github.com/codefrydev/ThreeDAssets.git
    cd ThreeDAssets
    ```
 
@@ -295,9 +295,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🆘 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/ThreeDAssets/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/ThreeDAssets/discussions)
-- **Documentation**: [Wiki](https://github.com/yourusername/ThreeDAssets/wiki)
+- **Issues**: [GitHub Issues](https://github.com/codefrydev/ThreeDAssets/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/codefrydev/ThreeDAssets/discussions)
+- **Documentation**: [Wiki](https://github.com/codefrydev/ThreeDAssets/wiki)
 
 ## 🙏 Acknowledgments
 
@@ -326,4 +326,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Made with ❤️ using Blazor WebAssembly and Tailwind CSS**
 
-For more information, visit the [project homepage](https://yourusername.github.io/ThreeDAssets) or check out the [live demo](https://yourusername.github.io/ThreeDAssets/demo).
+For more information, visit the [live project](https://codefrydev.in/ThreeDAssets/) or check out the [GitHub repository](https://github.com/codefrydev/ThreeDAssets).

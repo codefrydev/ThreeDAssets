@@ -1,0 +1,196 @@
+/* Theme Variables */
+:root {
+    /* Light Theme Colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9;
+    --bg-gradient-from: #f8fafc;
+    --bg-gradient-via: #dbeafe;
+    --bg-gradient-to: #e0e7ff;
+    
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-tertiary: #64748b;
+    --text-muted: #94a3b8;
+    
+    --border-primary: #e2e8f0;
+    --border-secondary: #cbd5e1;
+    --border-accent: #3b82f6;
+    
+    --accent-primary: #3b82f6;
+    --accent-secondary: #6366f1;
+    --accent-tertiary: #8b5cf6;
+    
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.dark {
+    /* Dark Theme Colors */
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    --bg-gradient-from: #0f172a;
+    --bg-gradient-via: #1e3a8a;
+    --bg-gradient-to: #312e81;
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-tertiary: #94a3b8;
+    --text-muted: #64748b;
+    
+    --border-primary: #334155;
+    --border-secondary: #475569;
+    --border-accent: #60a5fa;
+    
+    --accent-primary: #60a5fa;
+    --accent-secondary: #818cf8;
+    --accent-tertiary: #a78bfa;
+    
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.4);
+}
+
+/* Theme-aware utility classes */
+.bg-theme-primary { background-color: var(--bg-primary); }
+.bg-theme-secondary { background-color: var(--bg-secondary); }
+.bg-theme-tertiary { background-color: var(--bg-tertiary); }
+
+.text-theme-primary { color: var(--text-primary); }
+.text-theme-secondary { color: var(--text-secondary); }
+.text-theme-tertiary { color: var(--text-tertiary); }
+.text-theme-muted { color: var(--text-muted); }
+
+.border-theme-primary { border-color: var(--border-primary); }
+.border-theme-secondary { border-color: var(--border-secondary); }
+.border-theme-accent { border-color: var(--border-accent); }
+
+.shadow-theme-sm { box-shadow: var(--shadow-sm); }
+.shadow-theme-md { box-shadow: var(--shadow-md); }
+.shadow-theme-lg { box-shadow: var(--shadow-lg); }
+.shadow-theme-xl { box-shadow: var(--shadow-xl); }
+
+/* Theme-aware gradients */
+.bg-gradient-theme {
+    background: linear-gradient(to bottom right, var(--bg-gradient-from), var(--bg-gradient-via), var(--bg-gradient-to));
+}
+
+/* Additional theme-aware classes */
+.hover\:bg-theme-secondary:hover { background-color: var(--bg-secondary); }
+.hover\:text-theme-accent:hover { color: var(--accent-primary); }
+.hover\:border-theme-accent:hover { border-color: var(--border-accent); }
+
+/* Dark mode specific overrides */
+.dark .bg-white { background-color: var(--bg-primary); }
+.dark .bg-slate-50 { background-color: var(--bg-secondary); }
+.dark .bg-slate-100 { background-color: var(--bg-tertiary); }
+.dark .bg-slate-200 { background-color: var(--border-primary); }
+
+.dark .text-slate-900 { color: var(--text-primary); }
+.dark .text-slate-800 { color: var(--text-primary); }
+.dark .text-slate-700 { color: var(--text-secondary); }
+.dark .text-slate-600 { color: var(--text-secondary); }
+.dark .text-slate-500 { color: var(--text-tertiary); }
+.dark .text-slate-400 { color: var(--text-muted); }
+
+.dark .border-slate-200 { border-color: var(--border-primary); }
+.dark .border-slate-300 { border-color: var(--border-secondary); }
+.dark .border-slate-400 { border-color: var(--border-secondary); }
+
+/* Dark mode for specific color schemes */
+.dark .bg-blue-50 { background-color: rgba(59, 130, 246, 0.1); }
+.dark .bg-green-50 { background-color: rgba(34, 197, 94, 0.1); }
+.dark .bg-purple-50 { background-color: rgba(147, 51, 234, 0.1); }
+.dark .bg-orange-50 { background-color: rgba(249, 115, 22, 0.1); }
+.dark .bg-red-50 { background-color: rgba(239, 68, 68, 0.1); }
+.dark .bg-indigo-50 { background-color: rgba(99, 102, 241, 0.1); }
+
+.dark .text-blue-800 { color: rgba(59, 130, 246, 0.8); }
+.dark .text-green-800 { color: rgba(34, 197, 94, 0.8); }
+.dark .text-purple-800 { color: rgba(147, 51, 234, 0.8); }
+.dark .text-orange-800 { color: rgba(249, 115, 22, 0.8); }
+.dark .text-red-800 { color: rgba(239, 68, 68, 0.8); }
+.dark .text-indigo-800 { color: rgba(99, 102, 241, 0.8); }
+
+.dark .border-blue-200 { border-color: rgba(59, 130, 246, 0.3); }
+.dark .border-green-200 { border-color: rgba(34, 197, 94, 0.3); }
+.dark .border-purple-200 { border-color: rgba(147, 51, 234, 0.3); }
+.dark .border-orange-200 { border-color: rgba(249, 115, 22, 0.3); }
+.dark .border-red-200 { border-color: rgba(239, 68, 68, 0.3); }
+.dark .border-indigo-200 { border-color: rgba(99, 102, 241, 0.3); }
+
+/* Smooth transitions for theme changes */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dark mode for docs page specific elements */
+.dark .bg-gradient-to-br.from-slate-50.via-blue-50.to-indigo-50 {
+    background: linear-gradient(to bottom right, var(--bg-gradient-from), var(--bg-gradient-via), var(--bg-gradient-to));
+}
+
+.dark .shadow-xl {
+    box-shadow: var(--shadow-xl);
+}
+
+.dark .shadow-lg {
+    box-shadow: var(--shadow-lg);
+}
+
+/* Dark mode for code blocks */
+.dark .bg-slate-900 {
+    background-color: #1e293b;
+}
+
+.dark .bg-slate-800 {
+    background-color: #334155;
+}
+
+/* Dark mode for prose content */
+.dark .prose {
+    color: var(--text-secondary);
+}
+
+.dark .prose h1,
+.dark .prose h2,
+.dark .prose h3,
+.dark .prose h4,
+.dark .prose h5,
+.dark .prose h6 {
+    color: var(--text-primary);
+}
+
+.dark .prose p {
+    color: var(--text-secondary);
+}
+
+.dark .prose li {
+    color: var(--text-secondary);
+}
+
+.dark .prose strong {
+    color: var(--text-primary);
+}
+
+.dark .prose code {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border-color: var(--border-primary);
+}
+
+/* Theme toggle button specific styles */
+.theme-toggle {
+    @apply relative p-2.5 rounded-xl transition-all duration-200;
+}
+
+.theme-toggle.light {
+    @apply text-slate-700 hover:text-blue-600 hover:bg-slate-100;
+}
+
+.theme-toggle.dark {
+    @apply text-slate-300 hover:text-blue-400 hover:bg-slate-700;
+}
