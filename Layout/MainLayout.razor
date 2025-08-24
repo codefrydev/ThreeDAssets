@@ -4,59 +4,15 @@
     <NavBar/>
 
     <!-- Hero Section -->
-    <div class="relative overflow-hidden bg-gradient-to-br from-[#0d1b3e] via-[#0a192f] to-[#0a192f] min-h-screen">
-        <!-- Background Hexagon Pattern -->
-        <div class="absolute inset-0 bg-pattern opacity-50"></div>
-        <div class="relative z-10 w-full px-4 sm:px-6 lg:px-12 xl:px-20">
-            <!-- Main Content Grid -->
-            <div class="flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-12 min-h-screen">
-
-                <!-- Left: Text Content -->
-                <div class="w-full lg:w-1/2 max-w-xl text-center lg:text-left pt-20 lg:pt-0">
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-100 leading-tight mb-6">
-                        The leading platform for 3D & AR on the web
-                    </h1>
-                    <p class="text-lg sm:text-xl text-gray-400 mb-8 leading-relaxed">
-                        Manage your 3D assets. Distribute 3D & AR experiences. Collaborate with others. Showcase your
-                        work.
-                    </p>
-                </div>
-
-                <!-- Right: 3D Illustration -->
-                <div class="w-full lg:w-1/2 flex justify-center lg:justify-end pb-20 lg:pb-0">
-                    <div class="relative w-80 h-80 sm:w-96 sm:h-96 xl:w-[32rem] xl:h-[32rem]">
-
-                        <!-- 3D Model Viewer Hero -->
-                        @{
-                            var heroModel = new Models.ModelViewer
-                            {
-                                Source = "https://modelviewer.dev/shared-assets/models/Astronaut.glb", // Example model
-                                AltText = "Hero Astronaut",
-                                EnvironmentImage = "", // No environment
-                                SkyboxImage = "", // No skybox
-                                BackgroundColor = "transparent",
-                                Poster = "",
-                                CameraControls = true,
-                                AutoRotate = true,
-                                DisablePan = false,
-                                DisableTap = false
-                            };
-                        }
-                        <ThreeDModelViewer Model="heroModel"/>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
+    <HeroSection/>
 
     <!-- Spacer -->
     <div class="h-4 sm:h-6 lg:h-8"></div>
 
+    <!-- Gallery Section -->
     <main class="gallery-container">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
-                 id="galleryRow">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8" id="galleryRow">
                 @Body
             </div>
         </div>
