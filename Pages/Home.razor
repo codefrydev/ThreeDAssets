@@ -7,13 +7,13 @@
 {
     <div class="col-span-full flex justify-center items-center py-16 sm:py-20">
         <div class="text-center">
-            <div class="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 rounded-3xl shadow-2xl mb-6 animate-pulse">
-                <svg class="w-10 h-10 sm:w-12 sm:h-12 text-white animate-spin" fill="none" viewBox="0 0 24 24">
+            <div class="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 bg-theme-accent rounded-3xl shadow-theme-xl mb-6 animate-pulse">
+                <svg class="w-10 h-10 sm:w-12 sm:h-12 text-theme-primary animate-spin" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
             </div>
-            <p class="text-slate-600 font-semibold text-lg sm:text-xl">Loading 3D models...</p>
+            <p class="text-theme-secondary font-semibold text-lg sm:text-xl">Loading 3D models...</p>
         </div>
     </div>
 }
@@ -26,7 +26,7 @@ else
             @foreach (var item in _currentPageModels)
             {
                 <div class="group cursor-pointer transform transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]" @onclick="()=> LoadContent(item)">
-                    <div class="relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 bg-white border border-slate-100 hover:border-blue-200 hover:border-opacity-50">
+                    <div class="relative overflow-hidden rounded-3xl shadow-theme-lg hover:shadow-theme-xl transition-all duration-500 transform hover:-translate-y-3 bg-theme-primary border border-theme-primary">
                         <!-- Image Container -->
                         <div class="relative aspect-square overflow-hidden">
                             <img src="@item.ImageUrl"
@@ -37,12 +37,12 @@ else
                                  loading="lazy">
                             
                             <!-- Overlay on hover -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+                            <div class="absolute inset-0 bg-theme-primary/80 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
                             
                             <!-- Play button overlay -->
                             <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/40 shadow-lg">
-                                    <svg class="w-8 h-8 sm:w-10 sm:h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-theme-secondary/80 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-theme-primary/40 shadow-theme-lg">
+                                    <svg class="w-8 h-8 sm:w-10 sm:h-10 text-theme-accent ml-1" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M8 5v14l11-7z"></path>
                                     </svg>
                                 </div>
@@ -50,7 +50,7 @@ else
                             
                             <!-- Click indicator -->
                             <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                                <div class="bg-blue-600 text-white px-2 py-1 rounded-lg text-xs font-semibold shadow-lg">
+                                <div class="bg-theme-accent text-theme-primary px-2 py-1 rounded-lg text-xs font-semibold shadow-theme-lg">
                                     Click to View
                                 </div>
                             </div>
@@ -58,23 +58,23 @@ else
                         
                         <!-- Content -->
                         <div class="p-4 sm:p-5 lg:p-6">
-                            <h3 class="font-bold text-slate-900 text-lg sm:text-xl mb-2 group-hover:text-blue-600 transition-colors duration-200 overflow-hidden text-ellipsis whitespace-nowrap">
+                            <h3 class="font-bold text-theme-primary text-lg sm:text-xl mb-2 group-hover:text-theme-accent transition-colors duration-200 overflow-hidden text-ellipsis whitespace-nowrap">
                                 @item.Name
                             </h3>
-                            <p class="text-slate-600 text-sm sm:text-base mb-4 leading-relaxed overflow-hidden text-ellipsis whitespace-nowrap">
+                            <p class="text-theme-secondary text-sm sm:text-base mb-4 leading-relaxed overflow-hidden text-ellipsis whitespace-nowrap">
                                 @item.Description
                             </p>
                             
                             <!-- Tags/Badges -->
                             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                                 <div class="flex flex-wrap items-center gap-2">
-                                    <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 border border-blue-200">
+                                    <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-theme-secondary text-theme-accent border border-theme-accent">
                                         3D Model
                                     </span>
                                 </div>
                                 @if (item.IsFavourite)
                                 { 
-                                    <div class="w-full sm:w-auto px-4 py-2.5 text-sm font-semibold text-blue-600 bg-blue-50 rounded-xl border border-blue-200 text-center group-hover:bg-blue-100 group-hover:border-blue-300 transition-all duration-200">
+                                    <div class="w-full sm:w-auto px-4 py-2.5 text-sm font-semibold text-theme-accent bg-theme-secondary rounded-xl border border-theme-accent text-center group-hover:bg-theme-tertiary group-hover:border-theme-accent transition-all duration-200">
                                         ⭐ Favourite
                                     </div>
                                 }
@@ -91,43 +91,43 @@ else
         <!-- Pagination -->
         @if (_totalPages > 1)
         {
-            <div class="col-span-full flex flex-col sm:flex-row items-center justify-between gap-4 py-6 border-t border-slate-200">
+            <div class="col-span-full flex flex-col sm:flex-row items-center justify-between gap-4 py-6 border-t border-theme-primary">
                 <!-- Page Info and Page Size Selector -->
                 <div class="flex flex-col sm:flex-row items-center gap-4">
-                    <div class="text-sm text-slate-600">
+                    <div class="text-sm text-theme-secondary">
                         Showing @((_currentPage - 1) * _pageSize + 1) to @Math.Min(_currentPage * _pageSize, _allModelDataFromGithub.Count) of @_allModelDataFromGithub.Count models
                     </div>
                     
                     <!-- Page Size Selector -->
                     <div class="flex items-center space-x-2">
-                        <span class="text-sm text-slate-600">Show:</span>
-                        <select @onchange="@(e => { if (e.Value?.ToString() is string value && int.TryParse(value, out int size)) ChangePageSize(size); })" 
-                                value="@_pageSize"
-                                class="px-3 py-1.5 text-sm border border-slate-300 rounded-lg bg-white text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <span class="text-sm text-theme-secondary">Show:</span>
+            <select @onchange="@(e => { if (e.Value?.ToString() is string value && int.TryParse(value, out int size)) ChangePageSize(size); })" 
+                value="@_pageSize"
+                class="px-3 py-1.5 text-sm border border-theme-primary rounded-lg bg-theme-secondary text-theme-primary focus:outline-none focus:ring-2 focus:ring-theme-accent focus:border-transparent">
                             @foreach (var size in _pageSizeOptions)
                             {
                                 <option value="@size">@size</option>
                             }
                         </select>
-                        <span class="text-sm text-slate-600">per page</span>
+                        <span class="text-sm text-theme-secondary">per page</span>
                     </div>
                 </div>
                 
                 <!-- Pagination Controls -->
                 <div class="flex items-center space-x-2">
                     <!-- First Page -->
-                    <button @onclick="GoToFirstPage" 
-                            disabled="@(_currentPage == 1)"
-                            class="p-2 rounded-lg text-slate-600 hover:text-blue-600 hover:bg-blue-50 disabled:text-slate-400 disabled:bg-slate-100 disabled:cursor-not-allowed transition-all duration-200">
+            <button @onclick="GoToFirstPage" 
+                disabled="@(_currentPage == 1)"
+                class="p-2 rounded-lg text-theme-secondary hover:text-theme-accent hover:bg-theme-secondary disabled:text-theme-muted disabled:bg-theme-tertiary disabled:cursor-not-allowed transition-all duration-200">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"></path>
                         </svg>
                     </button>
                     
                     <!-- Previous Page -->
-                    <button @onclick="GoToPreviousPage" 
-                            disabled="@(_currentPage == 1)"
-                            class="p-2 rounded-lg text-slate-600 hover:text-blue-600 hover:bg-blue-50 disabled:text-slate-400 disabled:bg-slate-100 disabled:cursor-not-allowed transition-all duration-200">
+            <button @onclick="GoToPreviousPage" 
+                disabled="@(_currentPage == 1)"
+                class="p-2 rounded-lg text-theme-secondary hover:text-theme-accent hover:bg-theme-secondary disabled:text-theme-muted disabled:bg-theme-tertiary disabled:cursor-not-allowed transition-all duration-200">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                         </svg>
@@ -141,21 +141,21 @@ else
                             
                             if (startPage > 1)
                             {
-                                <button @onclick="() => GoToPage(1)" 
-                                        class="px-3 py-2 rounded-lg text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200">
+                <button @onclick="() => GoToPage(1)" 
+                    class="px-3 py-2 rounded-lg text-theme-secondary hover:text-theme-accent hover:bg-theme-secondary transition-all duration-200">
                                     1
                                 </button>
                                 if (startPage > 2)
                                 {
-                                    <span class="px-2 text-slate-400">...</span>
+                                    <span class="px-2 text-theme-muted">...</span>
                                 }
                             }
                             
                             for (int i = startPage; i <= endPage; i++)
                             {
                                 var pageNumber = i;
-                                <button @onclick="() => GoToPage(pageNumber)" 
-                                        class="@($"px-3 py-2 rounded-lg font-medium transition-all duration-200 {(pageNumber == _currentPage ? "bg-blue-600 text-white" : "text-slate-600 hover:text-blue-600 hover:bg-blue-50")}")">
+                <button @onclick="() => GoToPage(pageNumber)" 
+                    class="@($"px-3 py-2 rounded-lg font-medium transition-all duration-200 {(pageNumber == _currentPage ? "bg-theme-accent text-theme-primary" : "text-theme-secondary hover:text-theme-accent hover:bg-theme-secondary")}")">
                                     @pageNumber
                                 </button>
                             }
@@ -164,10 +164,10 @@ else
                             {
                                 if (endPage < _totalPages - 1)
                                 {
-                                    <span class="px-2 text-slate-400">...</span>
+                                    <span class="px-2 text-theme-muted">...</span>
                                 }
-                                <button @onclick="() => GoToPage(_totalPages)" 
-                                        class="px-3 py-2 rounded-lg text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200">
+                <button @onclick="() => GoToPage(_totalPages)" 
+                    class="px-3 py-2 rounded-lg text-theme-secondary hover:text-theme-accent hover:bg-theme-secondary transition-all duration-200">
                                     @_totalPages
                                 </button>
                             }
@@ -175,18 +175,18 @@ else
                     </div>
                     
                     <!-- Next Page -->
-                    <button @onclick="GoToNextPage" 
-                            disabled="@(_currentPage == _totalPages)"
-                            class="p-2 rounded-lg text-slate-600 hover:text-blue-600 hover:bg-blue-50 disabled:text-slate-400 disabled:bg-slate-100 disabled:cursor-not-allowed transition-all duration-200">
+            <button @onclick="GoToNextPage" 
+                disabled="@(_currentPage == _totalPages)"
+                class="p-2 rounded-lg text-theme-secondary hover:text-theme-accent hover:bg-theme-secondary disabled:text-theme-muted disabled:bg-theme-tertiary disabled:cursor-not-allowed transition-all duration-200">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                         </svg>
                     </button>
                     
                     <!-- Last Page -->
-                    <button @onclick="GoToLastPage" 
-                            disabled="@(_currentPage == _totalPages)"
-                            class="p-2 rounded-lg text-slate-600 hover:text-blue-600 hover:bg-blue-50 disabled:text-slate-400 disabled:bg-slate-100 disabled:cursor-not-allowed transition-all duration-200">
+            <button @onclick="GoToLastPage" 
+                disabled="@(_currentPage == _totalPages)"
+                class="p-2 rounded-lg text-theme-secondary hover:text-theme-accent hover:bg-theme-secondary disabled:text-theme-muted disabled:bg-theme-tertiary disabled:cursor-not-allowed transition-all duration-200">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7"></path>
                         </svg>
@@ -207,33 +207,33 @@ else
     else
     {
         <div class="col-span-full flex flex-col items-center justify-center py-20 sm:py-24 text-center">
-            <div class="w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-slate-100 to-slate-200 rounded-3xl flex items-center justify-center mb-6 shadow-lg">
+            <div class="w-24 h-24 sm:w-32 sm:h-32 bg-theme-secondary rounded-3xl flex items-center justify-center mb-6 shadow-theme-lg">
                 @if (Helper.IsFavouriteClicked)
                 {
-                    <svg class="w-12 h-12 sm:w-16 sm:h-16 text-yellow-500" fill="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-12 h-12 sm:w-16 sm:h-16 text-theme-accent" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                     </svg>
                 }
                 else
                 {
-                    <svg class="w-12 h-12 sm:w-16 sm:h-16 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-12 h-12 sm:w-16 sm:h-16 text-theme-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.47-.881-6.08-2.33"></path>
                     </svg>
                 }
             </div>
             @if (Helper.IsFavouriteClicked)
             {
-                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-3">No Favorite Models</h2>
-                <p class="text-slate-600 max-w-md text-base sm:text-lg leading-relaxed">You haven't marked any 3D models as favorites yet. Browse through the models and click the star icon to add them to your favorites!</p>
+                <h2 class="text-2xl sm:text-3xl font-bold text-theme-primary mb-3">No Favorite Models</h2>
+                <p class="text-theme-secondary max-w-md text-base sm:text-lg leading-relaxed">You haven't marked any 3D models as favorites yet. Browse through the models and click the star icon to add them to your favorites!</p>
                 <button @onclick="() => Helper.IsFavouriteClicked = false" 
-                        class="mt-6 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        class="mt-6 px-6 py-3 bg-theme-accent text-theme-primary font-semibold rounded-xl hover:bg-theme-secondary transition-all duration-200 shadow-theme-lg hover:shadow-theme-xl transform hover:-translate-y-1">
                     Browse All Models
                 </button>
             }
             else
             {
-                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-3">No 3D Models Found</h2>
-                <p class="text-slate-600 max-w-md text-base sm:text-lg leading-relaxed">It looks like there are no 3D models available at the moment. Please check back later or contact support if you believe this is an error.</p>
+                <h2 class="text-2xl sm:text-3xl font-bold text-theme-primary mb-3">No 3D Models Found</h2>
+                <p class="text-theme-secondary max-w-md text-base sm:text-lg leading-relaxed">It looks like there are no 3D models available at the moment. Please check back later or contact support if you believe this is an error.</p>
             }
         </div>
     }
