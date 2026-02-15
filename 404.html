@@ -4,8 +4,25 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="Immersive 3D model gallery. Browse high-quality, AR-ready 3D assets."/>
-    <title>ThreeDAssets - Modern 3D Model Gallery</title>
+    <meta name="robots" content="index, follow"/>
+    <meta name="description" content="Immersive 3D model gallery. Browse high-quality, AR-ready 3D assets. View in browser or AR. Blazor WebAssembly app with data generator and docs."/>
+    <title>ThreeDAssets – 3D Model Gallery | Browse AR-Ready Assets and View in Browser</title>
+    <link rel="canonical" href="" id="seo-canonical"/>
+    <!-- Hreflang: language/region for international SEO (urls set by script below) -->
+    <link rel="alternate" hreflang="en" href="" id="seo-hreflang-en"/>
+    <link rel="alternate" hreflang="x-default" href="" id="seo-hreflang-x-default"/>
+    <!-- Open Graph (URLs set dynamically by script below) -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="" id="seo-og-url"/>
+    <meta property="og:title" content="ThreeDAssets – 3D Model Gallery | Browse AR-Ready Assets and View in Browser"/>
+    <meta property="og:description" content="Immersive 3D model gallery. Browse high-quality, AR-ready 3D assets. View in browser or AR. Blazor WebAssembly app with data generator and docs."/>
+    <meta property="og:site_name" content="ThreeDAssets"/>
+    <meta property="og:image" content="" id="seo-og-image"/>
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="ThreeDAssets – 3D Model Gallery | Browse AR-Ready Assets and View in Browser"/>
+    <meta name="twitter:description" content="Immersive 3D model gallery. Browse high-quality, AR-ready 3D assets. View in browser or AR. Blazor WebAssembly app with data generator and docs."/>
+    <meta name="twitter:image" content="" id="seo-twitter-image"/>
     <base href="/ThreeDAssets/"/>
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
@@ -19,8 +36,12 @@
         })();
     </script>
     <link href="manifest.webmanifest" rel="manifest"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://codefrydev.in/favicon-32x32.png"/>
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png"/>
     <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png"/>
+
+    <!-- Font Awesome (solid + brands for fab icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
     <!-- Google Fonts: 1940s cartoon style -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -123,6 +144,29 @@
     <link href="ThreeDAssets.styles.css" rel="stylesheet"/>
     <link href="css/themes.css" rel="stylesheet"/>
     <link href="css/docs.css" rel="stylesheet"/>
+
+    <!-- JSON-LD: WebSite + WebApplication (urls injected by script below) -->
+    <script type="application/ld+json" id="seo-ld-website"></script>
+    <script type="application/ld+json" id="seo-ld-webapp"></script>
+    <script>
+        (function () {
+            var base = document.querySelector('base');
+            var basePath = (base && base.getAttribute('href')) || '/';
+            basePath = basePath.replace(/\/?$/, '/');
+            var baseUrl = location.origin + basePath;
+            var imageUrl = baseUrl + 'icon-512.png';
+            document.getElementById('seo-canonical').href = baseUrl;
+            document.getElementById('seo-hreflang-en').href = baseUrl;
+            document.getElementById('seo-hreflang-x-default').href = baseUrl;
+            document.getElementById('seo-og-url').setAttribute('content', baseUrl);
+            document.getElementById('seo-og-image').setAttribute('content', imageUrl);
+            document.getElementById('seo-twitter-image').setAttribute('content', imageUrl);
+            var website = {"@context":"https://schema.org","@type":"WebSite","name":"ThreeDAssets","description":"Immersive 3D model gallery. Browse high-quality, AR-ready 3D assets. View in browser or AR. Blazor WebAssembly app with data generator and docs.","url":baseUrl,"potentialAction":{"@type":"SearchAction","target":baseUrl+"#search","query-input":"required name=search_term_string"}};
+            var webapp = {"@context":"https://schema.org","@type":"WebApplication","name":"ThreeDAssets","description":"Modern 3D model gallery with AR support. Browse and view AR-ready 3D assets.","url":baseUrl,"applicationCategory":"MultimediaApplication","operatingSystem":"Any"};
+            document.getElementById('seo-ld-website').textContent = JSON.stringify(website);
+            document.getElementById('seo-ld-webapp').textContent = JSON.stringify(webapp);
+        })();
+    </script>
 </head>
 
 <body class="min-h-screen">

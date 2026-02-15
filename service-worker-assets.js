@@ -1,13 +1,13 @@
 self.assetsManifest = {
-  "version": "TGlQnSQD",
+  "version": "b4POjzLa",
   "assets": [
     {
       "hash": "sha256-E+Mt2ZudWTjGMLQsukw6qCNFOIHlFp8txQmPHDNWw0w=",
       "url": "_framework/Microsoft.AspNetCore.Components.Forms.tsij7kcdu0.wasm"
     },
     {
-      "hash": "sha256-NkAqvtb6rCAlL+VawbhbrJiJIEzAjt932JG6wQUVtNc=",
-      "url": "_framework/Microsoft.AspNetCore.Components.Web.qb1ihuc7qe.wasm"
+      "hash": "sha256-gxxCgWGOtk52MQaVkGuh48wm82uks5nKvFID+sUFmZo=",
+      "url": "_framework/Microsoft.AspNetCore.Components.Web.z0afkiq6ya.wasm"
     },
     {
       "hash": "sha256-K4H030gkTHmaCEJlY5dOMaLEJ7KcGQRM+DuB3mH4L1A=",
@@ -178,11 +178,11 @@ self.assetsManifest = {
       "url": "_framework/System.f0t8bkq7p2.wasm"
     },
     {
-      "hash": "sha256-cxy4bPoGp03Lhm0f9tmXg09IKMR4XS3z2D2ZQSusoXY=",
-      "url": "_framework/ThreeDAssets.lesf6owih8.wasm"
+      "hash": "sha256-m+SIw2MzrL9MUOmUV49yZ7phCZnLjEdwdymByujZvmc=",
+      "url": "_framework/ThreeDAssets.7dsob56zf7.wasm"
     },
     {
-      "hash": "sha256-OEk94rljcnkqf28b2XsdXkPRP4ca9hzKYAL7nI0c36I=",
+      "hash": "sha256-jByVI2klsxOfRTT19vY0jBVD31+G27kHVszei1+NhvE=",
       "url": "_framework/blazor.boot.json"
     },
     {
@@ -234,8 +234,16 @@ self.assetsManifest = {
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-Wx7fqqyPQ239p4woicqKxlmgH0m8G5u5CRacpvyI0xg=",
+      "hash": "sha256-VxKBRS3qXmNhjKjKkVVfPYzZzw8cCg3RXJnJ41CTTiY=",
       "url": "index.html"
+    },
+    {
+      "hash": "sha256-nE5uEPsXfs58mnBarO0AGWT1ojcegcQTstT8E6mku5Q=",
+      "url": "llms-full.txt"
+    },
+    {
+      "hash": "sha256-3x5USAx7Q8Y60gal6rmRF8iBLKHYcsW7imVYJ/63aOM=",
+      "url": "llms.txt"
     },
     {
       "hash": "sha256-dy7lF5tibSkAuPCWxqKgWFC5gS7+L4AETrOok2YqM4o=",
@@ -244,6 +252,14 @@ self.assetsManifest = {
     {
       "hash": "sha256-YXTXtshINuBrkntrPj+oyyux4a8+JVh4neMcOJwXSFo=",
       "url": "manifest.webmanifest"
+    },
+    {
+      "hash": "sha256-TuK9FfzclOWtVmrmWCslWYt3ELTIOWe74BCbJ/aJb6A=",
+      "url": "robots.txt"
+    },
+    {
+      "hash": "sha256-c9pv1gpgY/RXoqiTI87gNBYz90HhluTRFS+As0KWx1Y=",
+      "url": "sitemap.xml"
     }
   ]
 };
