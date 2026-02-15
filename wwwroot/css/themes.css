@@ -1,66 +1,69 @@
-/* Theme Variables */
+/* Theme Variables – 1940s Tom and Jerry cartoon aesthetic */
 :root {
-    /* Light Theme Colors */
-    --bg-primary: #ffffff;
-    --bg-secondary: #f8fafc;
-    --bg-tertiary: #f1f5f9;
-    --bg-gradient-from: #f8fafc;
-    --bg-gradient-via: #dbeafe;
-    --bg-gradient-to: #e0e7ff;
+    /* Light theme: warm cream/sepia, clear hierarchy and contrast */
+    --bg-primary: #faf6ed;
+    --bg-secondary: #f0e9dc;
+    --bg-tertiary: #e6dccb;
+    --bg-gradient-from: #faf6ed;
+    --bg-gradient-via: #f0e9dc;
+    --bg-gradient-to: #e6dccb;
 
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-tertiary: #64748b;
-    --text-muted: #94a3b8;
+    --text-primary: #1c1612;
+    --text-secondary: #3d3328;
+    --text-tertiary: #5c5042;
+    --text-muted: #7a6b5a;
 
-    --border-primary: #e2e8f0;
-    --border-secondary: #cbd5e1;
-    --border-accent: #3b82f6;
+    --border-primary: #5c5042;
+    --border-secondary: #3d3328;
+    --border-accent: #b91c3a;
 
-    --accent-primary: #3b82f6;
-    --accent: #3b82f6;
-    --accent-hover: #2563eb;
+    --accent-primary: #b91c3a;
+    --accent: #b91c3a;
+    --accent-hover: #9a1832;
     --accent-on: #ffffff;
-    --accent-secondary: #6366f1;
-    --accent-tertiary: #8b5cf6;
-    --overlay: rgba(0, 0, 0, 0.6);
+    --accent-secondary: #b91c3a;
+    --accent-tertiary: #ca8a04;
+    --overlay: rgba(28, 22, 18, 0.55);
 
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    /* Warmer, slightly stronger cartoon drop-shadows for depth on light */
+    --shadow-sm: 0 2px 4px 0 rgba(60, 51, 40, 0.1);
+    --shadow-md: 0 4px 12px -2px rgba(60, 51, 40, 0.14), 0 2px 6px -2px rgba(60, 51, 40, 0.08);
+    --shadow-lg: 0 12px 24px -4px rgba(60, 51, 40, 0.16), 0 4px 10px -4px rgba(60, 51, 40, 0.1);
+    --shadow-xl: 0 24px 32px -6px rgba(60, 51, 40, 0.2), 0 10px 14px -6px rgba(60, 51, 40, 0.12);
+
+    --border-width-cartoon: 3px;
 }
 
 .dark {
-    /* Dark Theme Colors */
-    --bg-primary: #0f172a;
-    --bg-secondary: #1e293b;
-    --bg-tertiary: #334155;
-    --bg-gradient-from: #0f172a;
-    --bg-gradient-via: #1e3a8a;
-    --bg-gradient-to: #312e81;
+    /* Dark theme: night cartoon variant */
+    --bg-primary: #2a2520;
+    --bg-secondary: #1e1a16;
+    --bg-tertiary: #363028;
+    --bg-gradient-from: #2a2520;
+    --bg-gradient-via: #1e1a16;
+    --bg-gradient-to: #363028;
 
-    --text-primary: #f8fafc;
-    --text-secondary: #cbd5e1;
-    --text-tertiary: #94a3b8;
-    --text-muted: #64748b;
+    --text-primary: #f5f0e8;
+    --text-secondary: #e5ddd0;
+    --text-tertiary: #c4b8a8;
+    --text-muted: #8a7d6d;
 
-    --border-primary: #334155;
-    --border-secondary: #475569;
-    --border-accent: #60a5fa;
+    --border-primary: #4a4038;
+    --border-secondary: #6b5d52;
+    --border-accent: #e05050;
 
-    --accent-primary: #60a5fa;
-    --accent: #60a5fa;
-    --accent-hover: #93c5fd;
+    --accent-primary: #e05050;
+    --accent: #e05050;
+    --accent-hover: #f06868;
     --accent-on: #ffffff;
-    --accent-secondary: #818cf8;
-    --accent-tertiary: #a78bfa;
+    --accent-secondary: #e05050;
+    --accent-tertiary: #e8b830;
     --overlay: rgba(0, 0, 0, 0.75);
 
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.4);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 4px 8px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.35), 0 4px 8px -4px rgba(0, 0, 0, 0.28);
+    --shadow-xl: 0 20px 28px -5px rgba(0, 0, 0, 0.4), 0 8px 12px -6px rgba(0, 0, 0, 0.3);
 }
 
 /* Theme-aware utility classes */
@@ -339,11 +342,11 @@ textarea {
 
 /* Dark mode for code blocks */
 .dark .bg-slate-900 {
-    background-color: #1e293b;
+    background-color: var(--bg-secondary);
 }
 
 .dark .bg-slate-800 {
-    background-color: #334155;
+    background-color: var(--bg-tertiary);
 }
 
 /* Dark mode for prose content */
@@ -380,8 +383,15 @@ textarea {
 
 /* Theme toggle uses theme utilities (text-theme-secondary, hover:text-theme-accent, etc.) */
 
+/* Subtle paper/film-grain texture (1940s cartoon) */
 .bg-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* Cartoon title-card style: thick black/brown outline */
+.cartoon-card {
+    border: var(--border-width-cartoon, 3px) solid var(--border-primary);
+    border-radius: 0.75rem;
 }
 
 @keyframes float {

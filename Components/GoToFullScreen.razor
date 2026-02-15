@@ -65,6 +65,7 @@ else
 <script>
     window.openFullScreen = (elementId) => {
         const elem = document.getElementById(elementId);
+        if (!elem) return;
         if (elem.requestFullscreen) {
             elem.requestFullscreen();
         } else if (elem.webkitRequestFullscreen) {

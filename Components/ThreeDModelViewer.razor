@@ -1,6 +1,6 @@
 @if (Model != null)
 {
-    <model-viewer id="ThreeDModelViewer"
+    <model-viewer id="@_viewerId"
                   src="@Model.Source"
                   alt="@Model.AltText"
                   ar="@Model.EnableAr"
@@ -33,7 +33,7 @@
                   loading="@Model.Loading"
                   background-color="@Model.BackgroundColor"
                   class="@(FillContainer ? "w-full h-full min-h-[200px] rounded-xl shadow-theme-lg bg-theme-primary border border-theme-primary" : "w-full h-64 sm:h-80 md:h-96 lg:h-[500px] xl:h-[600px] rounded-xl shadow-theme-lg bg-theme-primary border border-theme-primary")">
-        <GoToFullScreen ElementId="ThreeDModelViewer" ModelData="@Model"/>
+        <GoToFullScreen ElementId="@_viewerId" ModelData="@Model"/>
     </model-viewer>
 }
 else
