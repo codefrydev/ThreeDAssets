@@ -9,6 +9,21 @@ public class Helper
     public static List<Data> FavouriteModelData = [];
 
     public static event Action? FavoriteStateChanged;
+    public static event Action? SearchChanged;
+
+    private static string _searchQuery = "";
+    public static string SearchQuery
+    {
+        get => _searchQuery;
+        set
+        {
+            if (_searchQuery != value)
+            {
+                _searchQuery = value ?? "";
+                SearchChanged?.Invoke();
+            }
+        }
+    }
 
     public static bool IsFavouriteClicked
     {

@@ -15,15 +15,22 @@ public partial class Home : IDisposable
     private ModelViewer? _modelData;
     private ModelViewerOptionsList? _option;
     private List<Data> _allModelDataFromGithub = [];
+    private List<Data> _filteredList = [];
     private List<Data> _currentPageModels = [];
     private bool _isLoading = true;
     private bool _isPopupVisible = false;
 
-    // Pagination properties
+    // Pagination
     private int _currentPage = 1;
-    private int _pageSize = 12; // Show 12 models per page
+    private int _pageSize = 12;
     private int _totalPages = 1;
     private readonly int[] _pageSizeOptions = { 6, 12, 24, 48 };
+
+    // Sort: "name-asc" | "name-desc"
+    private string _sortOption = "name-asc";
+
+    // Grid size: "small" | "medium" | "large"
+    private string _gridSize = "medium";
 
     private void LoadContent(Data conData)
     {
@@ -71,8 +78,8 @@ public partial class Home : IDisposable
     {
         _isLoading = true;
 
-        // Subscribe to favorite state changes
         Helper.FavoriteStateChanged += OnFavoriteStateChanged;
+        Helper.SearchChanged += OnSearchChanged;
 
         await FetchDataAsync();
         UpdateDisplayedModels();
@@ -87,26 +94,57 @@ public partial class Home : IDisposable
         InvokeAsync(StateHasChanged);
     }
 
+    private void OnSearchChanged()
+    {
+        UpdateDisplayedModels();
+        InvokeAsync(StateHasChanged);
+    }
+
     private void UpdateDisplayedModels()
     {
         _allModelDataFromGithub = Helper.IsFavouriteClicked ? Helper.FavouriteModelData : Helper.AllModelData;
-        _currentPage = 1; // Reset to first page when filtering
+
+        var query = (Helper.SearchQuery ?? "").Trim().ToLowerInvariant();
+        _filteredList = string.IsNullOrEmpty(query)
+            ? _allModelDataFromGithub.ToList()
+            : _allModelDataFromGithub.Where(d =>
+                (d.Name?.Contains(query, StringComparison.OrdinalIgnoreCase) ?? false) ||
+                (d.Description?.Contains(query, StringComparison.OrdinalIgnoreCase) ?? false)).ToList();
+
+        _filteredList = _sortOption == "name-desc"
+            ? _filteredList.OrderByDescending(d => d.Name).ToList()
+            : _filteredList.OrderBy(d => d.Name).ToList();
+
+        _currentPage = 1;
         UpdatePagination();
     }
 
     private void UpdatePagination()
     {
-        _totalPages = (int)Math.Ceiling((double)_allModelDataFromGithub.Count / _pageSize);
-        _totalPages = Math.Max(1, _totalPages); // Ensure at least 1 page
-        _currentPage = Math.Min(_currentPage, _totalPages); // Ensure current page is valid
+        _totalPages = (int)Math.Ceiling((double)_filteredList.Count / _pageSize);
+        _totalPages = Math.Max(1, _totalPages);
+        _currentPage = Math.Min(_currentPage, _totalPages);
 
         var startIndex = (_currentPage - 1) * _pageSize;
-        var endIndex = Math.Min(startIndex + _pageSize, _allModelDataFromGithub.Count);
+        var endIndex = Math.Min(startIndex + _pageSize, _filteredList.Count);
 
-        if (startIndex < _allModelDataFromGithub.Count)
-            _currentPageModels = _allModelDataFromGithub.GetRange(startIndex, endIndex - startIndex);
+        if (startIndex < _filteredList.Count)
+            _currentPageModels = _filteredList.GetRange(startIndex, endIndex - startIndex);
         else
             _currentPageModels = new List<Data>();
+    }
+
+    private void ApplySort(string option)
+    {
+        _sortOption = option;
+        UpdateDisplayedModels();
+        StateHasChanged();
+    }
+
+    private void ApplyGridSize(string size)
+    {
+        _gridSize = size;
+        StateHasChanged();
     }
 
     private void GoToPage(int page)
@@ -152,8 +190,8 @@ public partial class Home : IDisposable
 
     public void Dispose()
     {
-        // Unsubscribe from events to prevent memory leaks
         Helper.FavoriteStateChanged -= OnFavoriteStateChanged;
+        Helper.SearchChanged -= OnSearchChanged;
     }
 
     private async Task FetchDataAsync()

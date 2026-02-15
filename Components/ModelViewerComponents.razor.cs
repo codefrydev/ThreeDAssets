@@ -11,6 +11,8 @@ public partial class ModelViewerComponents : ComponentBase
     [Parameter] public bool IsVisible { get; set; } = false;
     [Parameter] public EventCallback OnClose { get; set; }
 
+    private bool _showDetails = true;
+
     private void ClosePopup()
     {
         OnClose.InvokeAsync();

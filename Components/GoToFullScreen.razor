@@ -2,7 +2,7 @@
 
 @if (_isFullScreen)
 {
-    <div class="fixed inset-0 bg-black z-50">
+    <div class="fixed inset-0 bg-theme-primary z-50">
         <model-viewer id="@ElementId-fullscreen"
                       src="@(Helper.CurrentSelectedModel?.Source ?? ModelData.Source)"
                       alt="@ModelData.AltText"

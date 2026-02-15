@@ -1,246 +1,175 @@
 @if (Model is not null && IsVisible)
 {
-    <!-- Backdrop -->
-    <div class="fixed inset-0 bg-theme-secondary backdrop-blur-md z-50 flex items-center justify-center p-2 sm:p-4"
+    <div class="fixed inset-0 bg-theme-overlay backdrop-blur-sm z-50 flex flex-col"
          @onclick="ClosePopup">
-        <!-- Popup Content -->
-        <div
-            class="relative w-full max-w-7xl h-[95vh] bg-theme-primary rounded-3xl shadow-theme-xl overflow-hidden transform transition-all duration-300 scale-100 opacity-100 flex flex-col border border-theme-primary"
-            @onclick:stopPropagation="true">
-            <!-- Header - Fixed at top -->
-            <div
-                class="bg-theme-primary text-theme-primary px-4 sm:px-6 lg:px-8 py-4 sm:py-6 flex-shrink-0 border-b border-theme-primary">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center space-x-3">
-                        <div
-                            class="w-10 h-10 sm:w-12 sm:h-12 bg-theme-secondary rounded-2xl flex items-center justify-center shadow-theme-lg border border-theme-primary">
-                            <svg class="w-6 h-6 sm:w-7 sm:h-7 text-theme-accent" fill="none" stroke="currentColor"
-                                 viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-theme-primary">@Model.AltText</h2>
-                            <p class="text-theme-secondary text-sm sm:text-base">3D Model Viewer</p>
-                        </div>
-                    </div>
-
-                    <!-- Close Button -->
-                    <button @onclick="ClosePopup"
-                            class="p-2 sm:p-3 bg-theme-secondary hover:bg-theme-tertiary rounded-xl transition-all duration-200 hover:scale-110 group border border-theme-primary">
-                        <svg
-                            class="w-5 h-5 sm:w-6 sm:h-6 text-theme-accent group-hover:text-theme-primary transition-colors duration-200"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </div>
+        <div class="flex-1 flex flex-col min-h-0 max-h-screen" @onclick:stopPropagation="true">
+            <!-- Thin top bar: title + close -->
+            <div class="flex-shrink-0 flex items-center justify-between px-4 py-2 bg-theme-primary border-b border-theme-primary">
+                <h2 class="text-lg font-semibold text-theme-primary truncate">@Model.AltText</h2>
+                <button @onclick="ClosePopup"
+                        class="p-2 rounded-lg text-theme-secondary hover:text-theme-primary hover:bg-theme-secondary transition-colors"
+                        aria-label="Close">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
             </div>
 
-            <!-- Scrollable Body -->
-            <div class="flex-1 overflow-y-auto bg-theme-secondary">
-                <div class="p-4 sm:p-6 lg:p-8">
-                    <!-- 3D Model Viewer Section -->
-                    <div class="mb-6 sm:mb-8">
-                        <div
-                            class="bg-theme-primary rounded-3xl shadow-theme-lg border border-theme-primary overflow-hidden">
-                            <ThreeDModelViewer Model="Model" Options="Options"></ThreeDModelViewer>
-                        </div>
+            <!-- Viewer + right sidebar (Sketchfab-style controls) -->
+            <div class="flex-1 flex min-h-0">
+                <div class="flex-1 min-w-0 min-h-0 flex flex-col bg-theme-secondary">
+                    <div class="flex-1 min-h-0 rounded-none">
+                        <ThreeDModelViewer Model="Model" Options="Options" FillContainer="true"></ThreeDModelViewer>
                     </div>
+                </div>
 
-                    <!-- Model Information Section -->
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6 sm:mb-8">
-                        <!-- Model Details -->
-                        <div
-                            class="lg:col-span-2 bg-theme-primary rounded-3xl shadow-theme-lg p-4 sm:p-6 border border-theme-primary">
-                            <h3 class="text-lg sm:text-xl font-bold text-theme-primary mb-4 flex items-center">
-                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-theme-accent mr-2 sm:mr-3" fill="none"
-                                     stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                                Model Information
-                            </h3>
-                            <div class="space-y-3">
-                                <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
-                                    <span class="text-sm font-medium text-theme-secondary">Name:</span>
-                                    <span class="text-sm font-semibold text-theme-primary">@Model.AltText</span>
-                                </div>
-                                <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
-                                    <span class="text-sm font-medium text-theme-secondary">Source:</span>
-                                    <span
-                                        class="text-sm font-semibold text-theme-primary truncate max-w-48">@Model.Source</span>
-                                </div>
-                                <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
-                                    <span class="text-sm font-medium text-theme-secondary">Poster:</span>
-                                    <span
-                                        class="text-sm font-semibold text-theme-primary truncate max-w-48">@Model.Poster</span>
-                                </div>
+                <aside class="flex-shrink-0 w-80 border-l border-theme-primary bg-theme-primary overflow-y-auto">
+                    <div class="p-4 space-y-5">
+                        <!-- Model -->
+                        <section>
+                            <h3 class="text-xs font-semibold text-theme-muted uppercase tracking-wide mb-2">Model</h3>
+                            <p class="text-theme-primary font-medium text-sm">@Model.AltText</p>
+                        </section>
+
+                        <!-- Camera -->
+                        <section class="pt-2 border-t border-theme-primary">
+                            <h3 class="text-xs font-semibold text-theme-muted uppercase tracking-wide mb-3">Camera</h3>
+                            <div class="space-y-2.5 text-sm">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <InputCheckbox @bind-Value="Model.CameraControls" class="w-4 h-4 text-theme-accent" />
+                                    <span class="text-theme-primary">Camera controls</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <InputCheckbox @bind-Value="Model.AutoRotate" class="w-4 h-4 text-theme-accent" />
+                                    <span class="text-theme-primary">Auto rotate</span>
+                                </label>
                             </div>
-                        </div>
+                        </section>
 
-                        <!-- Quick Actions -->
-                        <div
-                            class="bg-theme-primary rounded-3xl shadow-theme-lg p-4 sm:p-6 border border-theme-primary">
-                            <h3 class="text-lg sm:text-xl font-bold text-theme-primary mb-4 flex items-center">
-                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-theme-accent mr-2 sm:mr-3" fill="none"
-                                     stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                          d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                </svg>
-                                Quick Actions
-                            </h3>
-                            <div class="space-y-3">
-                                <button
-                                    class="w-full px-4 py-3 bg-theme-secondary text-theme-primary font-semibold rounded-xl hover:bg-theme-tertiary transition-all duration-200 shadow-theme-lg hover:shadow-theme-xl transform hover:-translate-y-1 border border-theme-primary">
-                                    <div class="flex items-center justify-center space-x-2">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
-                                        </svg>
-                                        <span>Download Model</span>
-                                    </div>
-                                </button>
-                                <button
-                                    class="w-full px-4 py-3 bg-theme-secondary text-theme-primary font-semibold rounded-xl hover:bg-theme-tertiary transition-all duration-200 shadow-theme-lg hover:shadow-theme-xl transform hover:-translate-y-1 border border-theme-primary">
-                                    <div class="flex items-center justify-center space-x-2">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                                        </svg>
-                                        <span>View in AR</span>
-                                    </div>
-                                </button>
-                                <button
-                                    class="w-full px-4 py-3 bg-theme-secondary text-theme-primary font-semibold rounded-xl hover:bg-theme-tertiary transition-all duration-200 shadow-theme-lg hover:shadow-theme-xl transform hover:-translate-y-1 border border-theme-primary">
-                                    <div class="flex items-center justify-center space-x-2">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                  d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
-                                        </svg>
-                                        <span>Share Model</span>
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Advanced Controls Section -->
-                    <div class="bg-theme-primary rounded-3xl shadow-theme-lg p-4 sm:p-6 border border-theme-primary">
-                        <h3 class="text-lg sm:text-xl font-bold text-theme-primary mb-4 sm:mb-6 flex items-center">
-                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-theme-accent mr-2 sm:mr-3" fill="none"
-                                 stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
-                            Advanced Controls
-                        </h3>
-
-                        <!-- Toggle Controls -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
-                            <div
-                                class="flex items-center space-x-3 p-3 sm:p-4 bg-theme-secondary rounded-xl hover:bg-theme-tertiary transition-all duration-200 border border-theme-primary">
-                                <InputCheckbox @bind-Value="Model.EnableAr"
-                                               class="w-5 h-5 text-theme-accent border-theme-primary rounded-lg focus:ring-theme-accent focus:ring-2"
-                                               id="enableArCheck"/>
-                                <label class="text-sm sm:text-base font-semibold text-theme-secondary"
-                                       for="enableArCheck">Enable AR</label>
-                            </div>
-
-                            <div
-                                class="flex items-center space-x-3 p-3 sm:p-4 bg-theme-secondary rounded-xl hover:bg-theme-tertiary transition-all duration-200 border border-theme-primary">
-                                <InputCheckbox @bind-Value="Model.CameraControls"
-                                               class="w-5 h-5 text-theme-accent border-theme-primary rounded-lg focus:ring-theme-accent focus:ring-2"
-                                               id="cameraControlsCheck"/>
-                                <label class="text-sm sm:text-base font-semibold text-theme-secondary"
-                                       for="cameraControlsCheck">Camera Controls</label>
-                            </div>
-
-                            <div
-                                class="flex items-center space-x-3 p-3 sm:p-4 bg-theme-secondary rounded-xl hover:bg-theme-tertiary transition-all duration-200 border border-theme-primary">
-                                <InputCheckbox @bind-Value="Model.AutoRotate"
-                                               class="w-5 h-5 text-theme-accent border-theme-primary rounded-lg focus:ring-theme-accent focus:ring-2"
-                                               id="autoRotateCheck"/>
-                                <label class="text-sm sm:text-base font-semibold text-theme-secondary"
-                                       for="autoRotateCheck">Auto Rotate</label>
-                            </div>
-                        </div>
-
-                        <!-- Slider Controls -->
-                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-                            <div class="space-y-3">
-                                <label class="block text-sm sm:text-base font-semibold text-theme-secondary">Shadow
-                                    Intensity</label>
-                                <div class="flex items-center space-x-4">
+                        <!-- Display -->
+                        <section class="pt-2 border-t border-theme-primary">
+                            <h3 class="text-xs font-semibold text-theme-muted uppercase tracking-wide mb-3">Display</h3>
+                            <div class="space-y-3 text-sm">
+                                <div>
+                                    <label class="text-theme-muted block text-xs mb-1">Shadow intensity</label>
                                     <input type="range" min="0" max="2" step="0.1" @bind="Model.ShadowIntensity"
-                                           class="flex-1 h-2 bg-theme-tertiary rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-theme-accent [&::-webkit-slider-thumb]:shadow-theme-lg [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-theme-accent [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:shadow-theme-lg"/>
-                                    <span
-                                        class="px-3 py-1.5 bg-theme-secondary text-theme-accent text-sm font-semibold rounded-full min-w-[3rem] text-center border border-theme-accent">
-                                        @Model.ShadowIntensity
-                                    </span>
+                                           class="w-full h-2 bg-theme-tertiary rounded appearance-none [&::-webkit-slider-thumb]:bg-theme-accent [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3" />
                                 </div>
-                            </div>
-
-                            <div class="space-y-3">
-                                <label class="block text-sm sm:text-base font-semibold text-theme-secondary">Shadow
-                                    Softness</label>
-                                <div class="flex items-center space-x-4">
+                                <div>
+                                    <label class="text-theme-muted block text-xs mb-1">Shadow softness</label>
                                     <input type="range" min="0" max="1" step="0.1" @bind="Model.ShadowSoftness"
-                                           class="flex-1 h-2 bg-theme-tertiary rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-theme-accent [&::-webkit-slider-thumb]:shadow-theme-lg [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-theme-accent [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:shadow-theme-lg"/>
-                                    <span
-                                        class="px-3 py-1.5 bg-theme-secondary text-theme-accent text-sm font-semibold rounded-full min-w-[3rem] text-center border border-theme-accent">
-                                        @Model.ShadowSoftness
-                                    </span>
+                                           class="w-full h-2 bg-theme-tertiary rounded appearance-none [&::-webkit-slider-thumb]:bg-theme-accent [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3" />
                                 </div>
-                            </div>
-
-                            <div class="space-y-3">
-                                <label class="block text-sm sm:text-base font-semibold text-theme-secondary">Skybox
-                                    Height</label>
-                                <div class="flex items-center space-x-4">
-                                    <input type="range" min="1" max="20" step="0.1" @bind="Model.SkyboxHeight"
-                                           class="flex-1 h-2 bg-theme-tertiary rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-theme-accent [&::-webkit-slider-thumb]:shadow-theme-lg [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-theme-accent [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:shadow-theme-lg"/>
-                                    <span
-                                        class="px-3 py-1.5 bg-theme-secondary text-theme-accent text-sm font-semibold rounded-full min-w-[3rem] text-center border border-theme-accent">
-                                        @Model.SkyboxHeight
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="space-y-3">
-                                <label
-                                    class="block text-sm sm:text-base font-semibold text-theme-secondary">Exposure</label>
-                                <div class="flex items-center space-x-4">
+                                <div>
+                                    <label class="text-theme-muted block text-xs mb-1">Exposure</label>
                                     <input type="range" min="0" max="2" step="0.1" @bind="Model.Exposure"
-                                           class="flex-1 h-2 bg-theme-tertiary rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-theme-accent [&::-webkit-slider-thumb]:shadow-theme-lg [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-theme-accent [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:shadow-theme-lg"/>
-                                    <span
-                                        class="px-3 py-1.5 bg-theme-secondary text-theme-accent text-sm font-semibold rounded-full min-w-[3rem] text-center border border-theme-accent">
-                                        @Model.Exposure
-                                    </span>
+                                           class="w-full h-2 bg-theme-tertiary rounded appearance-none [&::-webkit-slider-thumb]:bg-theme-accent [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3" />
                                 </div>
+                                @if (Options?.ToneMappings?.Count > 0)
+                                {
+                                    <div>
+                                        <label class="text-theme-muted block text-xs mb-1">Tone mapping</label>
+                                        <select @bind="Model.ToneMapping" class="w-full px-2 py-1.5 text-sm border border-theme-primary rounded bg-theme-secondary text-theme-primary">
+                                            @foreach (var item in Options.ToneMappings)
+                                            {
+                                                <option value="@item">@item</option>
+                                            }
+                                        </select>
+                                    </div>
+                                }
                             </div>
-                        </div>
+                        </section>
 
-                        <!-- Animation Selection -->
+                        <!-- Environment -->
+                        <section class="pt-2 border-t border-theme-primary">
+                            <h3 class="text-xs font-semibold text-theme-muted uppercase tracking-wide mb-3">Environment</h3>
+                            <div class="space-y-3 text-sm">
+                                @if (Options?.EnvironmentImages?.Count > 0)
+                                {
+                                    <div>
+                                        <label class="text-theme-muted block text-xs mb-1">Environment image</label>
+                                        <select @bind="Model.EnvironmentImage" class="w-full px-2 py-1.5 text-sm border border-theme-primary rounded bg-theme-secondary text-theme-primary">
+                                            <option value="">Default</option>
+                                            @foreach (var url in Options.EnvironmentImages)
+                                            {
+                                                <option value="@url">@(url.Length > 45 ? url.Substring(0, 42) + "…" : url)</option>
+                                            }
+                                        </select>
+                                    </div>
+                                }
+                                @if (Options?.SkyboxImages?.Count > 0)
+                                {
+                                    <div>
+                                        <label class="text-theme-muted block text-xs mb-1">Skybox image</label>
+                                        <select @bind="Model.SkyboxImage" class="w-full px-2 py-1.5 text-sm border border-theme-primary rounded bg-theme-secondary text-theme-primary">
+                                            @foreach (var url in Options.SkyboxImages)
+                                            {
+                                                <option value="@url">@(url.Length > 45 ? url.Substring(0, 42) + "…" : url)</option>
+                                            }
+                                        </select>
+                                    </div>
+                                }
+                                @if (Options?.SkyboxHeights?.Count > 0)
+                                {
+                                    <div>
+                                        <label class="text-theme-muted block text-xs mb-1">Skybox height</label>
+                                        <select @bind="Model.SkyboxHeight" class="w-full px-2 py-1.5 text-sm border border-theme-primary rounded bg-theme-secondary text-theme-primary">
+                                            @foreach (var h in Options.SkyboxHeights)
+                                            {
+                                                <option value="@h">@h</option>
+                                            }
+                                        </select>
+                                    </div>
+                                }
+                            </div>
+                        </section>
+
+                        <!-- Animation -->
                         @if (Options?.AnimationNames?.Count > 0)
                         {
-                            <div class="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-slate-200">
-                                <label class="block text-sm sm:text-base font-semibold text-theme-secondary mb-3">Animation</label>
-                                <select @bind="Model.AnimationName"
-                                        class="w-full px-4 py-3 border border-theme-primary rounded-xl focus:ring-2 focus:ring-theme-accent focus:border-transparent transition-all duration-200 bg-theme-secondary text-base">
+                            <section class="pt-2 border-t border-theme-primary">
+                                <h3 class="text-xs font-semibold text-theme-muted uppercase tracking-wide mb-2">Animation</h3>
+                                <select @bind="Model.AnimationName" class="w-full px-2 py-1.5 text-sm border border-theme-primary rounded bg-theme-secondary text-theme-primary">
                                     @foreach (var item in Options.AnimationNames)
                                     {
                                         <option value="@item">@item</option>
                                     }
                                 </select>
-                            </div>
+                            </section>
                         }
+
+                        <!-- AR -->
+                        <section class="pt-2 border-t border-theme-primary">
+                            <h3 class="text-xs font-semibold text-theme-muted uppercase tracking-wide mb-2">AR</h3>
+                            <label class="flex items-center gap-2 cursor-pointer text-sm">
+                                <InputCheckbox @bind-Value="Model.EnableAr" class="w-4 h-4 text-theme-accent" />
+                                <span class="text-theme-primary">Enable AR</span>
+                            </label>
+                        </section>
+
+                        <!-- Actions / help -->
+                        <section class="pt-2 border-t border-theme-primary">
+                            <h3 class="text-xs font-semibold text-theme-muted uppercase tracking-wide mb-2">Actions</h3>
+                            <p class="text-xs text-theme-muted">Use the fullscreen icon on the viewer for fullscreen. AR is available when supported by your device.</p>
+                        </section>
+
+                        <!-- Details (collapsible) -->
+                        <section class="pt-2 border-t border-theme-primary">
+                            @if (_showDetails)
+                            {
+                                <button type="button" @onclick="() => _showDetails = false" class="text-sm font-medium text-theme-accent mb-2">Hide details</button>
+                                <div class="text-xs text-theme-secondary space-y-1 break-all">
+                                    <p><span class="text-theme-muted">Source:</span> @Model.Source</p>
+                                    <p><span class="text-theme-muted">Poster:</span> @Model.Poster</p>
+                                </div>
+                            }
+                            else
+                            {
+                                <button type="button" @onclick="() => _showDetails = true" class="text-sm font-medium text-theme-accent">Show details</button>
+                            }
+                        </section>
                     </div>
-                </div>
+                </aside>
             </div>
         </div>
     </div>

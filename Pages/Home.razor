@@ -1,11 +1,11 @@
-﻿@page "/"
+@page "/"
 @using ThreeDAssets.Utility
 @if (_isLoading)
 {
     <div class="col-span-full flex justify-center items-center py-16 sm:py-20">
         <div class="text-center">
             <div
-                class="inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 bg-theme-accent rounded-3xl shadow-theme-xl mb-6 animate-pulse">
+                class="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-theme-secondary rounded-xl shadow-theme-md mb-6">
                 <svg class="w-10 h-10 sm:w-12 sm:h-12 text-theme-primary animate-spin" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor"
@@ -20,80 +20,74 @@ else
 {
     if (_allModelDataFromGithub.Count > 0)
     {
+        <!-- Toolbar above grid -->
+        <div class="col-span-full flex flex-wrap items-center justify-between gap-4 py-4 border-b border-theme-primary mb-6">
+            <div class="flex flex-wrap items-center gap-3">
+                <span class="text-sm text-theme-secondary">Sort:</span>
+                <select @onchange="@(e => { if (e.Value?.ToString() is string v) ApplySort(v); })"
+                        value="@_sortOption"
+                        class="px-3 py-1.5 text-sm border border-theme-primary rounded-lg bg-theme-secondary text-theme-primary focus:ring-2 focus:ring-theme-accent">
+                    <option value="name-asc">Name A–Z</option>
+                    <option value="name-desc">Name Z–A</option>
+                </select>
+                <span class="text-sm text-theme-secondary">Show:</span>
+                <select @onchange="@(e => { if (e.Value?.ToString() is string v && int.TryParse(v, out var sz)) ChangePageSize(sz); })"
+                        value="@_pageSize"
+                        class="px-3 py-1.5 text-sm border border-theme-primary rounded-lg bg-theme-secondary text-theme-primary focus:ring-2 focus:ring-theme-accent">
+                    @foreach (var size in _pageSizeOptions)
+                    {
+                        <option value="@size">@size</option>
+                    }
+                </select>
+                <span class="text-sm text-theme-muted">per page</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="text-sm text-theme-secondary">Grid:</span>
+                <button type="button" @onclick='() => ApplyGridSize("small")'
+                        class="p-1.5 rounded-lg @(_gridSize == "small" ? "bg-theme-accent text-on-accent" : "bg-theme-secondary text-theme-primary hover:bg-theme-tertiary")"
+                        title="Small">S</button>
+                <button type="button" @onclick='() => ApplyGridSize("medium")'
+                        class="p-1.5 rounded-lg @(_gridSize == "medium" ? "bg-theme-accent text-on-accent" : "bg-theme-secondary text-theme-primary hover:bg-theme-tertiary")"
+                        title="Medium">M</button>
+                <button type="button" @onclick='() => ApplyGridSize("large")'
+                        class="p-1.5 rounded-lg @(_gridSize == "large" ? "bg-theme-accent text-on-accent" : "bg-theme-secondary text-theme-primary hover:bg-theme-tertiary")"
+                        title="Large">L</button>
+            </div>
+        </div>
+
+        @if (_filteredList.Count == 0)
+        {
+            <div class="col-span-full text-center py-12 text-theme-secondary">
+                No models match your search. Try a different query or clear the search.
+            </div>
+        }
+        else
+        {
         <!-- Models Grid -->
-        <div class="col-span-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+        <div class="col-span-full grid gap-4 sm:gap-6 mb-8 @(_gridSize == "small" ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6" : _gridSize == "large" ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4")">
             @foreach (var item in _currentPageModels)
             {
                 <div
-                    class="group cursor-pointer transform transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                    class="group cursor-pointer transition-shadow duration-200 hover:shadow-theme-xl active:opacity-95"
                     @onclick="()=> LoadContent(item)">
                     <div
-                        class="relative overflow-hidden rounded-3xl shadow-theme-lg hover:shadow-theme-xl transition-all duration-500 transform hover:-translate-y-3 bg-theme-primary border border-theme-primary">
-                        <!-- Image Container -->
-                        <div class="relative aspect-square overflow-hidden">
+                        class="relative overflow-hidden rounded-xl shadow-theme-md hover:shadow-theme-lg transition-shadow duration-200 bg-theme-primary border border-theme-primary">
+                        <!-- Thumbnail: square, hover View -->
+                        <div class="relative aspect-square overflow-hidden bg-theme-secondary">
                             <img src="@item.ImageUrl"
-                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out h-48 sm:h-56 lg:h-60 xl:h-64"
-                                 data-title="@item.Name"
-                                 data-description="@item.Description"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                  alt="@item.Name"
                                  loading="lazy">
-
-                            <!-- Overlay on hover -->
-                            <div
-                                class="absolute inset-0 bg-theme-primary/80 opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-
-                            <!-- Play button overlay -->
-                            <div
-                                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                                <div
-                                    class="w-16 h-16 sm:w-20 sm:h-20 bg-theme-secondary/80 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-theme-primary/40 shadow-theme-lg">
-                                    <svg class="w-8 h-8 sm:w-10 sm:h-10 text-theme-accent ml-1" fill="currentColor"
-                                         viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z"></path>
-                                    </svg>
-                                </div>
-                            </div>
-
-                            <!-- Click indicator -->
-                            <div
-                                class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                                <div
-                                    class="bg-theme-accent text-theme-primary px-2 py-1 rounded-lg text-xs font-semibold shadow-theme-lg">
-                                    Click to View
-                                </div>
+                            <div class="absolute inset-0 bg-theme-primary/70 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                                <span class="px-3 py-1.5 bg-theme-accent text-on-accent text-sm font-medium rounded-lg">View</span>
                             </div>
                         </div>
-
-                        <!-- Content -->
-                        <div class="p-4 sm:p-5 lg:p-6">
-                            <h3 class="font-bold text-theme-primary text-lg sm:text-xl mb-2 group-hover:text-theme-accent transition-colors duration-200 overflow-hidden text-ellipsis whitespace-nowrap">
-                                @item.Name
-                            </h3>
-                            <p class="text-theme-secondary text-sm sm:text-base mb-4 leading-relaxed overflow-hidden text-ellipsis whitespace-nowrap">
-                                @item.Description
-                            </p>
-
-                            <!-- Tags/Badges -->
-                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                                <div class="flex flex-wrap items-center gap-2">
-                                    <span
-                                        class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-theme-secondary text-theme-accent border border-theme-accent">
-                                        3D Model
-                                    </span>
-                                </div>
-                                @if (item.IsFavourite)
-                                {
-                                    <div
-                                        class="w-full sm:w-auto px-4 py-2.5 text-sm font-semibold text-theme-accent bg-theme-secondary rounded-xl border border-theme-accent text-center group-hover:bg-theme-tertiary group-hover:border-theme-accent transition-all duration-200">
-                                        ⭐ Favourite
-                                    </div>
-                                }
-                            </div>
+                        <!-- Minimal content: title + tag -->
+                        <div class="p-3">
+                            <h3 class="font-medium text-theme-primary text-sm sm:text-base truncate">@item.Name</h3>
+                            <span class="inline-block mt-1 text-xs text-theme-muted">3D Model</span>
                         </div>
 
-                        <!-- Hover effect overlay -->
-                        <div
-                            class="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                     </div>
                 </div>
             }
@@ -104,10 +98,9 @@ else
         {
             <div
                 class="col-span-full flex flex-col sm:flex-row items-center justify-between gap-4 py-6 border-t border-theme-primary">
-                <!-- Page Info and Page Size Selector -->
                 <div class="flex flex-col sm:flex-row items-center gap-4">
                     <div class="text-sm text-theme-secondary">
-                        Showing @((_currentPage - 1) * _pageSize + 1) to @Math.Min(_currentPage * _pageSize, _allModelDataFromGithub.Count) of @_allModelDataFromGithub.Count models
+                        Showing @((_currentPage - 1) * _pageSize + 1) to @Math.Min(_currentPage * _pageSize, _filteredList.Count) of @_filteredList.Count models
                     </div>
 
                     <!-- Page Size Selector -->
@@ -214,6 +207,7 @@ else
                 </div>
             </div>
         }
+        }
 
         if (_modelData != null)
         {
@@ -228,7 +222,7 @@ else
     {
         <div class="col-span-full flex flex-col items-center justify-center py-20 sm:py-24 text-center">
             <div
-                class="w-24 h-24 sm:w-32 sm:h-32 bg-theme-secondary rounded-3xl flex items-center justify-center mb-6 shadow-theme-lg">
+                class="w-20 h-20 sm:w-24 sm:h-24 bg-theme-secondary rounded-xl flex items-center justify-center mb-6 shadow-theme-md">
                 @if (Helper.IsFavouriteClicked)
                 {
                     <svg class="w-12 h-12 sm:w-16 sm:h-16 text-theme-accent" fill="currentColor" viewBox="0 0 24 24">
@@ -252,7 +246,7 @@ else
                     models as favorites yet. Browse through the models and click the star icon to add them to your
                     favorites!</p>
                 <button @onclick="() => Helper.IsFavouriteClicked = false"
-                        class="mt-6 px-6 py-3 bg-theme-accent text-theme-primary font-semibold rounded-xl hover:bg-theme-secondary transition-all duration-200 shadow-theme-lg hover:shadow-theme-xl transform hover:-translate-y-1">
+                        class="mt-6 px-6 py-3 bg-theme-accent text-on-accent font-medium rounded-xl hover:opacity-90 transition-opacity duration-200">
                     Browse All Models
                 </button>
             }

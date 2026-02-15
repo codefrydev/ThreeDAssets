@@ -1,8 +1,7 @@
-﻿<ThemeInitializer/>
+<ThemeInitializer/>
 <Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@GetLayout()"/>
-        <FocusOnNavigate RouteData="@routeData" Selector="h1"/>
+        <RouteView RouteData="@routeData" DefaultLayout="@GetLayout(routeData)"/>
     </Found>
     <NotFound>
         <PageTitle>Not found</PageTitle>
@@ -16,14 +15,13 @@
 {
     [Inject] NavigationManager NavigationManager { get; set; } = null!;
 
-    private Type GetLayout()
+    private Type GetLayout(RouteData routeData)
     {
-        var path = NavigationManager.Uri;
-
-        return path switch
-        {
-            _ when path.Contains("/DataGen") => typeof(DataGenLayout),
-            _ => typeof(MainLayout)
-        };
+        var pageType = routeData?.PageType;
+        if (pageType == null) return typeof(MainLayout);
+        var name = pageType.Name;
+        if (name == "DataGen") return typeof(DataGenLayout);
+        if (name == "Docs") return typeof(DocsLayout);
+        return typeof(MainLayout);
     }
 }

@@ -7,4 +7,5 @@ public partial class ThreeDModelViewer : ComponentBase
 {
     [Parameter] [EditorRequired] public ModelViewer Model { get; set; } = new();
     [Parameter] public ModelViewerOptionsList Options { get; set; } = new();
+    [Parameter] public bool FillContainer { get; set; }
 }

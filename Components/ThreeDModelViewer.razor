@@ -32,14 +32,14 @@
                   reveal="@Model.Reveal"
                   loading="@Model.Loading"
                   background-color="@Model.BackgroundColor"
-                  class="w-full h-64 sm:h-80 md:h-96 lg:h-[500px] xl:h-[600px] rounded-2xl sm:rounded-3xl shadow-theme-lg bg-theme-primary border border-theme-primary">
+                  class="@(FillContainer ? "w-full h-full min-h-[200px] rounded-xl shadow-theme-lg bg-theme-primary border border-theme-primary" : "w-full h-64 sm:h-80 md:h-96 lg:h-[500px] xl:h-[600px] rounded-xl shadow-theme-lg bg-theme-primary border border-theme-primary")">
         <GoToFullScreen ElementId="ThreeDModelViewer" ModelData="@Model"/>
     </model-viewer>
 }
 else
 {
     <div
-        class="w-full h-64 sm:h-80 md:h-96 bg-theme-secondary rounded-2xl sm:rounded-3xl flex items-center justify-center border border-theme-primary">
+        class="w-full h-64 sm:h-80 md:h-96 bg-theme-secondary rounded-xl flex items-center justify-center border border-theme-primary">
         <div class="text-center">
             <svg class="w-12 h-12 sm:w-16 sm:h-16 text-theme-tertiary" fill="none" stroke="currentColor"
                  viewBox="0 0 24 24">

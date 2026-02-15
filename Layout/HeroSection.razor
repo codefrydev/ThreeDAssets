@@ -1,41 +1,151 @@
-<div class="relative overflow-hidden bg-gradient-to-br from-[#0d1b3e] via-[#0a192f] to-[#0a192f] min-h-screen">
-    <!-- Background Hexagon Pattern -->
-    <div class="absolute inset-0 bg-pattern opacity-50"></div>
-    <div class="relative z-10 w-full px-4 sm:px-6 lg:px-12 xl:px-20">
-        <div class="flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-12 min-h-screen">
-            <!-- Left: Text Content -->
-            <div class="w-full lg:w-1/2 max-w-xl text-center lg:text-left pt-20 lg:pt-0">
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-100 leading-tight mb-6">
-                    The leading platform for 3D & AR on the web
-                </h1>
-                <p class="text-lg sm:text-xl text-gray-400 mb-8 leading-relaxed">
-                    Manage your 3D assets. Distribute 3D & AR experiences. Collaborate with others. Showcase your
-                    work.
-                </p>
-            </div>
-            <!-- Right: 3D Illustration -->
-            <div class="w-full lg:w-1/2 flex justify-center lg:justify-end pb-20 lg:pb-0">
-                <div class="relative w-80 h-80 sm:w-96 sm:h-96 xl:w-[32rem] xl:h-[32rem]">
-                    <!-- 3D Model Viewer Hero -->
-                    @{
-                        var heroModel = new Models.ModelViewer
-                        {
-                            Source = "https://modelviewer.dev/shared-assets/models/Astronaut.glb",
-                            AltText = "Hero Astronaut",
-                            EnvironmentImage = "",
-                            SkyboxImage = "",
-                            BackgroundColor = "transparent",
-                            Poster = "",
-                            CameraControls = true,
-                            AutoRotate = true,
-                            DisablePan = false,
-                            DisableTap = false
-                        };
-                    }
-                    <ThreeDModelViewer Model="heroModel"/>
-                </div>
-            </div>
+@using ThreeDAssets.Models
+
+<section class="hero-section">
+    <div class="hero-inner">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Premium 3D models for the web
+            </h1>
+            <p class="hero-subtitle">
+                Browse, view, and share AR-ready 3D assets. One place for your models.
+            </p>
+            <a href="#galleryRow" class="hero-cta">Browse models</a>
+        </div>
+        <div class="hero-viewer">
+            @{
+                var heroModel = new ModelViewer
+                {
+                    Source = "https://modelviewer.dev/shared-assets/models/Astronaut.glb",
+                    AltText = "Hero 3D model",
+                    EnvironmentImage = "",
+                    SkyboxImage = "",
+                    BackgroundColor = "transparent",
+                    Poster = "",
+                    CameraControls = true,
+                    AutoRotate = true,
+                    DisablePan = false,
+                    DisableTap = false
+                };
+            }
+            <ThreeDModelViewer Model="heroModel" />
         </div>
     </div>
-</div>
+</section>
+
+<style>
+    .hero-section {
+        background: var(--bg-secondary);
+        border-bottom: 1px solid var(--border-primary);
+        padding: 3rem 1.5rem 4rem;
+        min-height: min(85vh, 640px);
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-inner {
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+    }
+
+    @@media (min-width: 1024px) {
+        .hero-inner {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 3rem;
+        }
+    }
+
+    .hero-content {
+        text-align: center;
+        max-width: 28rem;
+    }
+
+    @@media (min-width: 1024px) {
+        .hero-content {
+            text-align: left;
+            max-width: 22rem;
+            order: 1;
+        }
+    }
+
+    .hero-title {
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        font-weight: 600;
+        color: var(--text-primary);
+        line-height: 1.2;
+        margin: 0 0 0.75rem 0;
+        letter-spacing: -0.02em;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin: 0 0 1.5rem 0;
+    }
+
+    @@media (min-width: 640px) {
+        .hero-subtitle {
+            font-size: 1.125rem;
+        }
+    }
+
+    .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.625rem 1.25rem;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        color: var(--accent-on);
+        background: var(--accent);
+        border-radius: 0.5rem;
+        text-decoration: none;
+        transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .hero-cta:hover {
+        opacity: 0.92;
+        transform: translateY(-1px);
+    }
+
+    .hero-viewer {
+        width: 100%;
+        max-width: 20rem;
+        aspect-ratio: 1;
+        border-radius: 1rem;
+        overflow: hidden;
+        border: 1px solid var(--border-primary);
+        background: var(--bg-tertiary);
+        box-shadow: var(--shadow-lg);
+    }
+
+    @@media (min-width: 640px) {
+        .hero-viewer {
+            max-width: 24rem;
+        }
+    }
+
+    @@media (min-width: 1024px) {
+        .hero-viewer {
+            max-width: 28rem;
+            order: 2;
+            flex-shrink: 0;
+        }
+    }
+
+    .hero-viewer model-viewer,
+    .hero-viewer ::deep model-viewer {
+        width: 100%;
+        height: 100%;
+        min-height: 240px;
+        --poster-color: transparent;
+    }
+</style>
 
