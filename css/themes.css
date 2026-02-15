@@ -18,8 +18,12 @@
     --border-accent: #3b82f6;
 
     --accent-primary: #3b82f6;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --accent-on: #ffffff;
     --accent-secondary: #6366f1;
     --accent-tertiary: #8b5cf6;
+    --overlay: rgba(0, 0, 0, 0.6);
 
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -46,8 +50,12 @@
     --border-accent: #60a5fa;
 
     --accent-primary: #60a5fa;
+    --accent: #60a5fa;
+    --accent-hover: #93c5fd;
+    --accent-on: #ffffff;
     --accent-secondary: #818cf8;
     --accent-tertiary: #a78bfa;
+    --overlay: rgba(0, 0, 0, 0.75);
 
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
@@ -96,6 +104,36 @@
     border-color: var(--border-accent);
 }
 
+.bg-theme-accent {
+    background-color: var(--accent-primary);
+}
+
+.text-theme-accent {
+    color: var(--accent-primary);
+}
+
+.text-on-accent {
+    color: var(--accent-on);
+}
+
+.bg-theme-overlay {
+    background: var(--overlay);
+}
+
+/* Muted overlay on accent (e.g. header icon bg) */
+.bg-on-accent-muted {
+    background-color: color-mix(in srgb, var(--accent-on) 20%, transparent);
+}
+
+.bg-on-accent-muted:hover {
+    background-color: color-mix(in srgb, var(--accent-on) 30%, transparent);
+}
+
+/* Focus ring color for inputs (used with Tailwind focus:ring-2) */
+.ring-theme-accent {
+    --tw-ring-color: var(--accent-primary);
+}
+
 .shadow-theme-sm {
     box-shadow: var(--shadow-sm);
 }
@@ -128,6 +166,12 @@
 
 .hover\:border-theme-accent:hover {
     border-color: var(--border-accent);
+}
+
+/* Focus ring for accessibility */
+:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
 }
 
 /* Dark mode specific overrides */
@@ -256,8 +300,27 @@
     border-color: rgba(99, 102, 241, 0.3);
 }
 
-/* Smooth transitions for theme changes */
-* {
+/* Form controls: theme-aware by default */
+input,
+select,
+textarea {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border-color: var(--border-primary);
+}
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-muted);
+}
+
+/* Scoped transitions for theme changes (avoids jank from universal * transition) */
+.theme-toggle,
+button,
+a,
+[role="button"],
+input,
+select,
+textarea {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -315,18 +378,7 @@
     border-color: var(--border-primary);
 }
 
-/* Theme toggle button specific styles */
-.theme-toggle {
-    @apply relative p-2.5 rounded-xl transition-all duration-200;
-}
-
-.theme-toggle.light {
-    @apply text-slate-700 hover:text-blue-600 hover:bg-slate-100;
-}
-
-.theme-toggle.dark {
-    @apply text-slate-300 hover:text-blue-400 hover:bg-slate-700;
-}
+/* Theme toggle uses theme utilities (text-theme-secondary, hover:text-theme-accent, etc.) */
 
 .bg-pattern {
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
