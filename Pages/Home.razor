@@ -1,5 +1,15 @@
 @page "/"
 @using ThreeDAssets.Utility
+@inject NavigationManager NavigationManager
+<PageTitle>ThreeDAssets – 3D Model Gallery | Browse AR-Ready Assets and View in Browser</PageTitle>
+<HeadContent>
+    <meta property="og:title" content="ThreeDAssets – 3D Model Gallery | Browse AR-Ready Assets and View in Browser"/>
+    <meta property="og:description" content="Immersive 3D model gallery. Browse high-quality, AR-ready 3D assets. View in browser or AR. Blazor WebAssembly app with data generator and docs."/>
+    <meta property="og:url" content="@NavigationManager.Uri"/>
+    <meta name="twitter:title" content="ThreeDAssets – 3D Model Gallery | Browse AR-Ready Assets and View in Browser"/>
+    <meta name="twitter:description" content="Immersive 3D model gallery. Browse high-quality, AR-ready 3D assets. View in browser or AR. Blazor WebAssembly app with data generator and docs."/>
+    <link rel="canonical" href="@NavigationManager.Uri"/>
+</HeadContent>
 @if (_isLoading)
 {
     <div class="col-span-full flex justify-center items-center py-16 sm:py-20">

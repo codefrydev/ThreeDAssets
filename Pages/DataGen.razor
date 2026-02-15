@@ -1,2 +1,12 @@
 @page "/DataGen"
+@inject NavigationManager NavigationManager
+<PageTitle>Data Generator – ThreeDAssets</PageTitle>
+<HeadContent>
+    <meta property="og:title" content="Data Generator – ThreeDAssets"/>
+    <meta property="og:description" content="Create and manage 3D model metadata. Generate JSON for your AR-ready 3D assets."/>
+    <meta property="og:url" content="@NavigationManager.Uri"/>
+    <meta name="twitter:title" content="Data Generator – ThreeDAssets"/>
+    <meta name="twitter:description" content="Create and manage 3D model metadata. Generate JSON for your AR-ready 3D assets."/>
+    <link rel="canonical" href="@NavigationManager.Uri"/>
+</HeadContent>
 <DataGenComponent/>
